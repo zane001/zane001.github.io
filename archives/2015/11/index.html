@@ -65,7 +65,7 @@
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: '',
     sidebar: 'post',
     motion: true
   };
@@ -323,6 +323,16 @@
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zane001" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> gitHub
+                  
+                </a>
+              </span>
+            
+          
         </div>
 
         
@@ -347,7 +357,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  Thu Feb 23 2012 08:00:00 GMT+0800 (中国标准时间) - 
+  &copy;  2012-02-23 00:00 - 
   <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
@@ -362,7 +372,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT
   </a>
 </div>
 
@@ -438,6 +448,30 @@
 
   
   
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
 
   
   
