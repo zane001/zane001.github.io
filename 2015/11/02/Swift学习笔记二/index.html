@@ -1,0 +1,828 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="Project 1 &amp;amp; Project 2
+从Cell(而不是整个Table View)跳转到Detail View在Storyboard里，用control 拖动建立IB时，需要在各自组件的Custom Class的Class添加关联，Cell选择相应的Cell
+Could not insert new outlet connection ……
+关闭xcode.
+进入~/Library/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习笔记二">
+<meta property="og:url" content="http://zane001.github.io/2015/11/02/Swift学习笔记二/index.html">
+<meta property="og:site_name" content="Zane001's Blog">
+<meta property="og:description" content="Project 1 &amp;amp; Project 2
+从Cell(而不是整个Table View)跳转到Detail View在Storyboard里，用control 拖动建立IB时，需要在各自组件的Custom Class的Class添加关联，Cell选择相应的Cell
+Could not insert new outlet connection ……
+关闭xcode.
+进入~/Library/">
+<meta property="og:updated_time" content="2015-12-02T10:53:32.358Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift学习笔记二">
+<meta name="twitter:description" content="Project 1 &amp;amp; Project 2
+从Cell(而不是整个Table View)跳转到Detail View在Storyboard里，用control 拖动建立IB时，需要在各自组件的Custom Class的Class添加关联，Cell选择相应的Cell
+Could not insert new outlet connection ……
+关闭xcode.
+进入~/Library/">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Swift学习笔记二 | Zane001's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?d433ce1a5c39adaeb9f8137e69df4edd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zane001's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swift学习笔记二
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-02T00:00:00+08:00" content="2015-11-02">
+              2015-11-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/02/Swift学习笔记二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/02/Swift学习笔记二/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="Project_1_&amp;_Project_2">Project 1 &amp; Project 2</h3><ol>
+<li>从Cell(而不是整个Table View)跳转到Detail View<br>在Storyboard里，用control 拖动建立IB时，需要在各自组件的Custom Class的Class添加关联，Cell选择相应的Cell</li>
+<li>Could not insert new outlet connection ……<ol>
+<li>关闭xcode.</li>
+<li>进入~/Library/Developer/XCode/DerivedData目录，删除名字为 工程名+一连串字母的文件夹</li>
+</ol>
+</li>
+<li>cp使用-R参数后可以复制文件或文件夹，不加-R参数只能复制文件</li>
+<li><p>NSFileManager的使用</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let fm = NSFileManager.defaultManager()</span><br><span class="line">let path = NSBundle.mainBundle().resourcePath!</span><br><span class="line">let <span class="keyword">items</span> = <span class="keyword">try</span>! fm.contentsOfDirectoryAtPath(path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="keyword">item</span> <span class="operator">in</span> <span class="keyword">items</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">item</span>.hasPrefix(<span class="string">"nssl"</span>)) &#123;</span><br><span class="line">      objects.append(<span class="keyword">item</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>In iOS, sizes are measured in “points”, not pixels.</p>
+</li>
+<li><p>GameplayKit的使用，以及数组元素的随机排序，设置生成随机数的上限。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import GameplayKit</span><br><span class="line">countries = GKRandomSource.<span class="function"><span class="title">sharedRandom</span><span class="params">()</span></span>.<span class="function"><span class="title">arrayByShufflingObjectsInArray</span><span class="params">(countries)</span></span> as! [String]</span><br><span class="line">correctAnswer = GKRandomSource.<span class="function"><span class="title">sharedRandom</span><span class="params">()</span></span>.<span class="function"><span class="title">nextIntWithUpperBound</span><span class="params">(<span class="number">3</span>)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3个button共用一个sender，使用不同的tag来区分</p>
+</li>
+<li><p>设置button的宽度及颜色，UIColor位于上层，CGColor继承自UIColor</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">button</span><span class="class">.layer</span><span class="class">.borderWidth</span> = <span class="number">1</span></span><br><span class="line"><span class="tag">button</span><span class="class">.layer</span><span class="class">.borderColor</span> = UIColor.<span class="function"><span class="title">lightGrayColor</span><span class="params">()</span></span>.CGColor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>弹窗提醒的代码</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let ac = UIAlertController(<span class="string">title:</span> title, <span class="string">message:</span> <span class="string">"You score is \(score)"</span>, <span class="string">preferredStyle:</span> .Alert)</span><br><span class="line">ac.addAction(UIAlertAction(<span class="string">title:</span> <span class="string">"Continue"</span>, <span class="string">style:</span> .Default, <span class="string">handler:</span> askQuestion))</span><br><span class="line">presentViewController(ac, <span class="string">animated:</span> <span class="literal">true</span>, <span class="string">completion:</span> nil)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Project_3_Social_Media">Project 3 Social Media</h3><ol>
+<li><p>import Social 引入社交包, 设置右上角的button</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigationItem<span class="class">.rightBarButtonItem</span> = <span class="function"><span class="title">UIBarButtonItem</span><span class="params">(barButtonSystemItem: .Action, target: self, action: <span class="string">"shareTapped"</span>)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>UIActivityViewController 分享功能，示例为调用Twitter</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let vc = SLComposeViewController(<span class="string">forServiceType:</span> SLServiceTypeTwitter)</span><br><span class="line">vc.setInitialText(<span class="string">"Look at this amazing picture!"</span>)</span><br><span class="line">vc.addImage(detailImageView.image!)</span><br><span class="line">vc.addURL(NSURL(<span class="string">string:</span> “<span class="string">http:</span><span class="comment">//www.123.com/"))</span></span><br><span class="line">presentViewController(vc, <span class="string">animated:</span> <span class="literal">true</span>, <span class="string">completion:</span> nil)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Project_4_Easy_Browser">Project 4 Easy Browser</h3><ol>
+<li><p>使用WebKit WebView</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">loadView</span><span class="params">()</span></span> &#123;</span><br><span class="line">    webView = <span class="type">WKWebView</span>()</span><br><span class="line">    webView.navigationDelegate = <span class="keyword">self</span></span><br><span class="line">    view = webView</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用NSURL打开网址，允许返回</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let url = <span class="function"><span class="title">NSURL</span><span class="params">(string: <span class="string">"https://m.baidu.com"</span>)</span></span>!</span><br><span class="line">webView.<span class="function"><span class="title">loadRequest</span><span class="params">(NSURLRequest(URL: url)</span></span>)</span><br><span class="line">webView<span class="class">.allowsBackForwardNavigationGestures</span> = true  打开为空白页</span><br><span class="line">func <span class="function"><span class="title">openPage</span><span class="params">(action: UIAlertAction!)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加ToolBar,刷新键</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let refresh = UIBarButtonItem(<span class="string">barButtonSystemItem:</span> .Refresh, <span class="string">target:</span> webView, <span class="string">action:</span> <span class="string">"reload"</span>)</span><br><span class="line">toolbarItems = [spacer, refresh]</span><br><span class="line">navigationController?.toolbarHidden = false</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将UIProgressView包裹进UIBarButtonItem</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">progressView = <span class="function"><span class="title">UIProgressView</span><span class="params">(progressViewStyle: .Default)</span></span></span><br><span class="line">progressView.<span class="function"><span class="title">sizeToFit</span><span class="params">()</span></span></span><br><span class="line">let progressButton = <span class="function"><span class="title">UIBarButtonItem</span><span class="params">(customView: progressView)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>KVO (Key-Value Observer)</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   <span class="tag">webView</span><span class="class">.addObserver</span>(self, <span class="attribute">forKeyPath</span>: <span class="string">"estimatedProgress"</span>, <span class="attribute">options</span>: .New, <span class="attribute">context</span>: nil)</span><br><span class="line">	 <span class="tag">override</span> <span class="tag">func</span> <span class="tag">observeValueForKeyPath</span>(......) &#123;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>阻止用户访问某些链接，使用rangeOfString方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="func"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(webView: WKWebView, decidePolicyForNavigationAction…)</span></span> &#123;</span><br><span class="line">      <span class="keyword">let</span> url = navigationAction.request.<span class="type">URL</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> <span class="keyword">let</span> host = url!.host &#123;</span><br><span class="line">          <span class="keyword">for</span> website <span class="keyword">in</span> websites &#123;</span><br><span class="line">              <span class="keyword">if</span> host.rangeOfString(website) != <span class="literal">nil</span> &#123;</span><br><span class="line">                  decisionHandler(.<span class="type">Allow</span>)</span><br><span class="line">                  <span class="keyword">return</span></span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      decisionHandler(.<span class="type">Cancel</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Project_5_Word_Scramble">Project 5 Word Scramble</h3><ol>
+<li><p>寻找文本路径、载入文本、处理文本</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">if</span> <span class="keyword">let</span> startWordsPath = NSBundle.mainBundle().pathForResource(<span class="string">"start"</span>, ofType: <span class="string">"txt"</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> <span class="keyword">let</span> startWords = <span class="keyword">try</span>? <span class="built_in">String</span>(contentsOfFile: startWordsPath, usedEncoding: nil) 	&#123;</span><br><span class="line">             allWords = startWords.componentsSeparatedByString(<span class="string">"\n"</span>)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         allWords = [“<span class="string">silkworm"]      </span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清空、重载TableView数据</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objects.<span class="function"><span class="title">removeAll</span><span class="params">(keepCapacity: true)</span></span></span><br><span class="line">tableView.<span class="function"><span class="title">reloadData</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>无主引用 (an unowned reference is one you’re certifying cannot be nil and so doesn’t need to be unwrapped.)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ac = <span class="type">UIAlertController</span>(title: <span class="string">"Enter answer"</span>, message: <span class="literal">nil</span>, preferredStyle: .<span class="type">Alert</span>)</span><br><span class="line">ac.addTextFieldWithConfigurationHandler(<span class="literal">nil</span>)</span><br><span class="line"><span class="keyword">let</span> submitAction = <span class="type">UIAlertAction</span>(title: <span class="string">"Submit"</span>, style: .<span class="type">Default</span>) &#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>, ac](action: <span class="type">UIAlertAction</span>!) <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">let</span> answer = ac.textFields![<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">self</span>.submitAnswer(answer.text!)</span><br><span class="line">&#125;</span><br><span class="line">ac.addAction(submitAction)</span><br><span class="line">presentViewController(ac, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>仅插入指定的行到table view，而不是整个reload</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">objects.<span class="function"><span class="title">insert</span><span class="params">(lowerAnswer, atIndex: <span class="number">0</span>)</span></span></span><br><span class="line">let indexPath = <span class="function"><span class="title">NSIndexPath</span><span class="params">(forRow: <span class="number">0</span>, inSection: <span class="number">0</span>)</span></span></span><br><span class="line">tableView.<span class="function"><span class="title">insertRowsAtIndexPaths</span><span class="params">([indexPath], withRowAnimation: .Automatic)</span></span></span><br><span class="line">tempWord.<span class="function"><span class="title">removeAtIndex</span><span class="params">()</span></span> 移除并且返回该元素</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查单词是否是一个正确的单词，使用NSMakeRange</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">wordIsReal</span><span class="params">(word: String)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> checker = <span class="type">UITextChecker</span>()</span><br><span class="line">    <span class="keyword">let</span> range = <span class="type">NSMakeRange</span>(<span class="number">0</span>, word.characters.<span class="built_in">count</span>)</span><br><span class="line">    <span class="keyword">let</span> misspelledRange = checker.rangeOfMisspelledWordInString(word, range: range, startingAt: <span class="number">0</span>, wrap: <span class="literal">false</span>, language: <span class="string">"en"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> misspelledRange.location == <span class="type">NSNotFound</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>!objects.contains(word) 报错，待修改</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Cannot</span> convert value <span class="keyword">of</span> <span class="typedef"><span class="keyword">type</span> '<span class="type">String'</span> to expected argument <span class="keyword">type</span> '@noescape <span class="container">(<span class="type">AnyObject</span>)</span> throws -&gt; <span class="type">Bool</span>’</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Project_6_Auto_Layout">Project 6 Auto Layout</h3><ol>
+<li><p>隐藏状态栏</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">prefersStatusBarHidden</span><span class="params">()</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭自动布局 <code>label.translatesAutoresizingMaskIntoConstraints = false</code></p>
+</li>
+<li><p>Auto Layout Visual Format Language (VFL)</p>
+<ol>
+<li><p>H表示水平方向 The pipe symbol | means “the edge of the view.”</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> label <span class="keyword">in</span> viewsDictionary.keys &#123;</span><br><span class="line">     view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(<span class="string">"H:|[\(label)]|"</span>, <span class="string">options:</span> [], <span class="string">metrics:</span> [<span class="string">"labelHeight"</span>: <span class="number">88</span>], <span class="string">views:</span> viewsDictionary))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>V表示竖直方向 -symbol, which means “space”. It’s 10 points by default</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"V<span class="value">:|[<span class="function">label1</span>(labelHeight@<span class="number">999</span>)]-[<span class="function">label2</span>(label1)]-[<span class="function">label3</span>(label1)]-[<span class="function">label4</span>(label1)]-[<span class="function">label5</span>(label1)]<span class="function">-</span>(&gt;=<span class="number">10</span>)-|<span class="string">"</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>TL;DR (Too Long, Didn’t Read) 太长不看</p>
+</li>
+</ol>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift/" rel="tag">#swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/17/Swift学习笔记一/" rel="next" title="Swift学习笔记一">
+                <i class="fa fa-chevron-left"></i> Swift学习笔记一
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/04/Swift学习笔记三/" rel="prev" title="Swift学习笔记三">
+                Swift学习笔记三 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/02/Swift学习笔记二/"
+           data-title="Swift学习笔记二" data-url="http://zane001.github.io/2015/11/02/Swift学习笔记二/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars3.githubusercontent.com/u/3918810?v=3&s=460" alt="zane001" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">zane001</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">It's never too old to learn.</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zane001" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> gitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_1_&_Project_2"><span class="nav-number">1.</span> <span class="nav-text">Project 1 & Project 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_3_Social_Media"><span class="nav-number">2.</span> <span class="nav-text">Project 3 Social Media</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_4_Easy_Browser"><span class="nav-number">3.</span> <span class="nav-text">Project 4 Easy Browser</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_5_Word_Scramble"><span class="nav-number">4.</span> <span class="nav-text">Project 5 Word Scramble</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_6_Auto_Layout"><span class="nav-number">5.</span> <span class="nav-text">Project 6 Auto Layout</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012-02-23 00:00 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zane001</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zane001"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+</body>
+</html>

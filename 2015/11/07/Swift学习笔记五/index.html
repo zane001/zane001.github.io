@@ -1,0 +1,798 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="Project 11 Pachinko
+SpriteKit 的point 0,0 表示某一个node的水平、竖直的中心点，Y坐标起始于底部，Y越大，在屏幕的位置越靠上。didMoveToView() 类似于 viewDidLoad()
+12345let background = SKSpriteNode(imageNamed: &quot;background.jpg&quot;)background.zPositi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习笔记五">
+<meta property="og:url" content="http://zane001.github.io/2015/11/07/Swift学习笔记五/index.html">
+<meta property="og:site_name" content="Zane001's Blog">
+<meta property="og:description" content="Project 11 Pachinko
+SpriteKit 的point 0,0 表示某一个node的水平、竖直的中心点，Y坐标起始于底部，Y越大，在屏幕的位置越靠上。didMoveToView() 类似于 viewDidLoad()
+12345let background = SKSpriteNode(imageNamed: &quot;background.jpg&quot;)background.zPositi">
+<meta property="og:updated_time" content="2015-12-02T11:17:18.138Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift学习笔记五">
+<meta name="twitter:description" content="Project 11 Pachinko
+SpriteKit 的point 0,0 表示某一个node的水平、竖直的中心点，Y坐标起始于底部，Y越大，在屏幕的位置越靠上。didMoveToView() 类似于 viewDidLoad()
+12345let background = SKSpriteNode(imageNamed: &quot;background.jpg&quot;)background.zPositi">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Swift学习笔记五 | Zane001's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?d433ce1a5c39adaeb9f8137e69df4edd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zane001's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swift学习笔记五
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-07T00:00:00+08:00" content="2015-11-07">
+              2015-11-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/07/Swift学习笔记五/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/07/Swift学习笔记五/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="Project_11_Pachinko">Project 11 Pachinko</h3><ol>
+<li><p>SpriteKit 的point 0,0 表示某一个node的水平、竖直的中心点，Y坐标起始于底部，Y越大，在屏幕的位置越靠上。<br>didMoveToView() 类似于 viewDidLoad()</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let <span class="attribute">background</span> = <span class="function"><span class="title">SKSpriteNode</span><span class="params">(imageNamed: <span class="string">"background.jpg"</span>)</span></span></span><br><span class="line"><span class="attribute">background</span><span class="class">.zPosition</span> = -<span class="number">1</span>        <span class="comment">// behind everything else</span></span><br><span class="line"><span class="attribute">background</span><span class="class">.blendMode</span> = <span class="class">.Replace</span>	<span class="comment">// just draw it, ignoring any alpha values</span></span><br><span class="line"><span class="function"><span class="title">addChild</span><span class="params">(background)</span></span></span><br><span class="line">physicsBody = <span class="function"><span class="title">SKPhysicsBody</span><span class="params">(edgeLoopFromRect: frame)</span></span> <span class="comment">//给整个屏幕添加PhysicsBody</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在屏幕点击处绘制一个box，包括颜色、大小、physicsBody</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">override func touchesBegan(touches: Set&lt;UITouch&gt;, withEvent event: UIEvent?) &#123;</span><br><span class="line">      <span class="keyword">if</span> let touch = touches.first &#123;</span><br><span class="line">          let location = touch.locationInNode(self)</span><br><span class="line">          let <span class="built_in">box</span> = SKSpriteNode(<span class="built_in">color</span>: UIColor.redColor(), <span class="built_in">size</span>: CGSize(<span class="variable">width</span>: <span class="number">64</span>, <span class="variable">height</span>: <span class="number">64</span>))</span><br><span class="line">          <span class="built_in">box</span>.position = location</span><br><span class="line">          <span class="built_in">box</span>.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(<span class="variable">width</span>: <span class="number">64</span>, <span class="variable">height</span>: <span class="number">64</span>))</span><br><span class="line">          addChild(<span class="built_in">box</span>)</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>被碰撞后不会被移动</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bouncer.physicsBody!.<span class="keyword">dynamic</span> = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置旋转动作，包括弧度、时间间隔。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let spin = SKAction.<span class="function"><span class="title">rotateByAngle</span><span class="params">(CGFloat(M_PI_2)</span></span>, duration: <span class="number">10</span>)	<span class="comment">// 每隔10秒旋转90°</span></span><br><span class="line">let spinForever = SKAction.<span class="function"><span class="title">repeatActionForever</span><span class="params">(spin)</span></span>		<span class="comment">// 永不停止</span></span><br><span class="line">slotGlow.<span class="function"><span class="title">runAction</span><span class="params">(spinForever)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>physicsBody的 contactTestBitMask 赋值给 collisionBitMask</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">physicsWorld<span class="class">.contactDelegate</span> = self</span><br><span class="line">ball.physicsBody!<span class="class">.collisionBitMask</span> = ball.physicsBody!.contactTestBitMask</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将一个node移除 <code>SKNode.removeFromParent()</code></p>
+</li>
+<li><p>判断接触的bodyA和bodyB</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">func</span> didBeginContact(contact: SKPhysicsContact) &#123;	//override</span><br><span class="line">    <span class="preprocessor">if</span> contact.<span class="keyword">bodyA.node!.name </span>== <span class="string">"ball"</span> &#123;</span><br><span class="line">        collisionBetweenBall(contact.<span class="keyword">bodyA.node!, </span>object: contact.<span class="keyword">bodyB.node!)</span><br><span class="line"></span>    &#125; <span class="preprocessor">else</span> <span class="preprocessor">if</span> contact.<span class="keyword">bodyB.node!.name </span>== <span class="string">"ball"</span> &#123;</span><br><span class="line">        collisionBetweenBall(contact.<span class="keyword">bodyB.node!, </span>object: contact.<span class="keyword">bodyA.node!)</span><br><span class="line"></span>    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 didSet 属性观察器</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> scoreLabel</span>: SKLabelNode!  		</span><br><span class="line"><span class="variable"><span class="keyword">var</span> score</span>: <span class="typename">Int</span> = <span class="number">0</span> &#123;</span><br><span class="line">     didSet &#123;</span><br><span class="line">        scoreLabel.text = <span class="string">"Score: \(score)"</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">let objects = nodesAtPoint(location) <span class="keyword">as</span> [SKNode] <span class="comment">// 获取到location的nodes</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 GKRandomDistribution 方法设置随机数的上限、下限</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let size = <span class="function"><span class="title">CGSize</span><span class="params">(width: GKRandomDistribution(lowestValue: <span class="number">16</span>, highestValue: <span class="number">128</span>)</span></span>.<span class="function"><span class="title">nextInt</span><span class="params">()</span></span>, <span class="attribute">height</span>: <span class="number">16</span>)   <span class="comment">//生成16-128的Int类型随机数</span></span><br><span class="line">box<span class="class">.zRotation</span> = <span class="function"><span class="title">RandomCGFloat</span><span class="params">(<span class="number">0</span>, max: <span class="number">3</span>)</span></span>  <span class="comment">//随机的旋转，0-3的范围</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 SKEmitterNode 方法，火焰粒子效果</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> fireParticles = SKEmitterNode(fileNamed: <span class="string">"FireParticles"</span>) &#123;</span><br><span class="line">     fireParticles.position = ball.position</span><br><span class="line">     addChild(fireParticles)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Project_12_NSUserDefaults">Project 12 NSUserDefaults</h3><ol>
+<li><p>as? 和 ?? 的用法</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let array = defaults.objectForKey("SavedArray") as? [<span class="link_label">String</span>] ?? [<span class="link_label">String</span>](<span class="link_url"></span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 NSUserDefault 需要遵守 NSCoding 协议</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">required</span> <span class="keyword">init</span>(coder aDecoder: <span class="type">NSCoder</span>) &#123;	<span class="comment">//  required表示必须要实现这个方法</span></span><br><span class="line">    name = aDecoder.decodeObjectForKey(<span class="string">"name"</span>) <span class="keyword">as</span>! <span class="type">String</span>   <span class="comment">// 解密</span></span><br><span class="line">    image = aDecoder.decodeObjectForKey(<span class="string">"image"</span>) <span class="keyword">as</span>! <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 加密</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">encodeWithCoder</span><span class="params">(aCoder: NSCoder)</span></span> &#123;</span><br><span class="line">    aCoder.encodeObject(name, forKey: <span class="string">"name"</span>)</span><br><span class="line">    aCoder.encodeObject(name, forKey: <span class="string">"image"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 array 类型转换为 NSData 类型。</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">func<span class="function"> save(</span><span class="function">)</span> &#123;</span><br><span class="line">    //   converts<span class="instruction"> array </span>into an NSData object</span><br><span class="line">    let savedData =<span class="function"> NSKeyedArchiver.archivedDataWithRootObject(</span>people<span class="function">)</span></span><br><span class="line">    let defaults =<span class="function"> NSUserDefaults.standardUserDefaults(</span><span class="function">)</span></span><br><span class="line">   <span class="function"> defaults.setObject(</span>savedData, forKey: <span class="string">"people"</span><span class="function">)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取出optional NSData，convert it back to an object graph</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> defaults = NSUserDefaults.standardUserDefaults()</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> savedPeople = defaults.objectForKey(<span class="string">"people"</span>) <span class="keyword">as</span>? NSData &#123;</span><br><span class="line">     people = NSKeyedUnarchiver.unarchiveObjectWithData(savedPeople) <span class="keyword">as</span>! [Person]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>NSUserDefaults是不安全的，如果涉及私密信息，可以用keychain替代.</p>
+<h3 id="Project_13_Instafilter">Project 13 Instafilter</h3></li>
+<li><p>使用 CIContext CIFilter</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">context = CIContext<span class="list">(<span class="keyword">options</span>: <span class="literal">nil</span>)</span></span><br><span class="line">currentFilter = CIFilter<span class="list">(<span class="keyword">name</span>: “CISepiaTone<span class="string">")</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 CIImage</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let beginImage = <span class="function"><span class="title">CIImage</span><span class="params">(image: currentImage)</span></span></span><br><span class="line">currentFilter.<span class="function"><span class="title">setValue</span><span class="params">(beginImage, forKey: kCIInputImageKey)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 CGImage 转换为 UIImage</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="component">func applyProcessing() &#123;</span><br><span class="line">    currentFilter<span class="string">.setValue(intensity.value</span>, forKey: kCIInputIntensityKey)</span><br><span class="line">    let cgimg = context<span class="string">.createCGImage(currentFilter.outputImage!</span>, fromRect: currentFilter<span class="string">.outputImage!.extent)</span></span><br><span class="line">    let processedImage = UIImage(CGImage: cgimg)</span><br><span class="line">    imageView<span class="string">.image</span> = processedImage</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>presentViewController(xxxxx, animated: true, completion: nil)</code> 把其中的xxxxx写成self导致运行时错误。</p>
+</li>
+<li>UIImagePickerControllerEditedImage 少写Picker导致import图片后，无法继续操作。</li>
+<li><p>先判断input keys 是否存在，然后判断是否包括 kCIInputIntensityKey</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> inputKeys = currentFilter.inputKeys</span><br><span class="line"><span class="keyword">if</span> inputKeys.contains(kCIInputIntensityKey) &#123;</span><br><span class="line">     currentFilter.setValue(intensity.value, <span class="keyword">for</span>Key: kCIInputIntensityKey)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 imageView 写入图片库</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">UIImageWriteToSavedPhotosAlbum</span>(<span class="tag">imageView</span><span class="class">.image</span>!, <span class="tag">self</span>, "<span class="tag">image</span><span class="pseudo">:didFinishSavingWithError</span><span class="pseudo">:contextInfo</span><span class="pseudo">:"</span>, <span class="tag">nil</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>写入图片库时的错误处理，使用 NSError，localizedDescription 显示具体的错误信息。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">func image(<span class="string">image:</span> UIImage!, didFinishSavingWithError <span class="string">error:</span> NSError?, contextInfo: UnsafePointer&lt;Void&gt;) &#123;</span><br><span class="line"></span><br><span class="line">     let ac = UIAlertController(<span class="string">title:</span> <span class="string">"Save error!"</span>, <span class="string">message:</span> error?.localizedDescription, preferredStyle: .Alert)</span><br><span class="line">     ac.addAction(UIAlertAction(<span class="string">title:</span> <span class="string">"OK"</span>, <span class="string">style:</span> .Default, <span class="string">handler:</span> nil))</span><br><span class="line">     presentViewController(ac, <span class="string">animated:</span> <span class="literal">true</span>, <span class="string">completion:</span> nil)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift/" rel="tag">#swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/05/Swift学习笔记四/" rel="next" title="Swift学习笔记四">
+                <i class="fa fa-chevron-left"></i> Swift学习笔记四
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/15/Swift学习笔记六/" rel="prev" title="Swift学习笔记六">
+                Swift学习笔记六 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/07/Swift学习笔记五/"
+           data-title="Swift学习笔记五" data-url="http://zane001.github.io/2015/11/07/Swift学习笔记五/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars3.githubusercontent.com/u/3918810?v=3&s=460" alt="zane001" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">zane001</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">It's never too old to learn.</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zane001" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> gitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_11_Pachinko"><span class="nav-number">1.</span> <span class="nav-text">Project 11 Pachinko</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_12_NSUserDefaults"><span class="nav-number">2.</span> <span class="nav-text">Project 12 NSUserDefaults</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_13_Instafilter"><span class="nav-number">3.</span> <span class="nav-text">Project 13 Instafilter</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012-02-23 00:00 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zane001</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zane001"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+</body>
+</html>

@@ -1,0 +1,798 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="Project 7 Whitehouse Petitions
+使用NSURL、NSData
+12345678910if let url = NSURL(string: urlString) &amp;#123;    if let data = try? NSData(contentsOfURL: url, options: []) &amp;#123;        let json = JSON(data:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习笔记三">
+<meta property="og:url" content="http://zane001.github.io/2015/11/04/Swift学习笔记三/index.html">
+<meta property="og:site_name" content="Zane001's Blog">
+<meta property="og:description" content="Project 7 Whitehouse Petitions
+使用NSURL、NSData
+12345678910if let url = NSURL(string: urlString) &amp;#123;    if let data = try? NSData(contentsOfURL: url, options: []) &amp;#123;        let json = JSON(data:">
+<meta property="og:updated_time" content="2015-12-02T11:42:51.350Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift学习笔记三">
+<meta name="twitter:description" content="Project 7 Whitehouse Petitions
+使用NSURL、NSData
+12345678910if let url = NSURL(string: urlString) &amp;#123;    if let data = try? NSData(contentsOfURL: url, options: []) &amp;#123;        let json = JSON(data:">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Swift学习笔记三 | Zane001's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?d433ce1a5c39adaeb9f8137e69df4edd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zane001's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swift学习笔记三
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-04T00:00:00+08:00" content="2015-11-04">
+              2015-11-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/04/Swift学习笔记三/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/04/Swift学习笔记三/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="Project_7_Whitehouse_Petitions">Project 7 Whitehouse Petitions</h3><ol>
+<li><p>使用NSURL、NSData</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> url = NSURL(<span class="built_in">string</span>: urlString) &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> data = <span class="keyword">try</span>? NSData(contentsOfURL: url, options: []) &#123;</span><br><span class="line">        <span class="keyword">let</span> json = <span class="built_in">JSON</span>(data: data)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> json[<span class="string">"metadata"</span>][<span class="string">"responseInfo"</span>][<span class="string">"status"</span>] == <span class="number">200</span> &#123;</span><br><span class="line">            print(<span class="string">"200"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用开源SwiftyJSON，解析JSON字符串</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func parseJSON(json: <span class="type">JSON</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="literal">result</span> <span class="keyword">in</span> json[<span class="string">"results"</span>].arrayValue &#123;</span><br><span class="line">        <span class="keyword">let</span> title = <span class="literal">result</span>[<span class="string">"title"</span>].stringValue</span><br><span class="line">        <span class="keyword">let</span> body = <span class="literal">result</span>[<span class="string">"body"</span>].stringValue</span><br><span class="line">        <span class="keyword">let</span> sigs = <span class="literal">result</span>[<span class="string">"signatureCount"</span>].stringValue</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">object</span> = [<span class="string">"title"</span>: title, <span class="string">"body"</span>: body, <span class="string">"sigs"</span>: sigs]</span><br><span class="line">        objects.append(<span class="keyword">object</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    tableView.reloadData()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>“NSURLSession/NSURLConnection HTTP load failed (kCFStreamErrorDomainSSL, -9802)”<br>解决办法：在Info.plist里添加</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">key</span>&gt;</span>NSAppTransportSecurity<span class="tag">&lt;/<span class="title">key</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">dict</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">key</span>&gt;</span>NSExceptionDomains<span class="tag">&lt;/<span class="title">key</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">key</span>&gt;</span>whitehouse.gov<span class="tag">&lt;/<span class="title">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">dict</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="title">key</span>&gt;</span>NSIncludesSubdomains<span class="tag">&lt;/<span class="title">key</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="title">true</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="title">key</span>&gt;</span>NSThirdPartyExceptionAllowsInsecureHTTPLoads<span class="tag">&lt;/<span class="title">key</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="title">true</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">dict</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">dict</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在cellForRowAtIndexPath方法里，显示标题、内容，这里使用默认Cell样式。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cell.textLabel!<span class="class">.text</span> = <span class="tag">object</span>[<span class="string">"title"</span>]</span><br><span class="line">cell.detailTextLabel!<span class="class">.text</span> = <span class="tag">object</span>[“body<span class="string">"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将webView设置为当前view，载入html网页</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> WebKit</span><br><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">loadView</span><span class="params">()</span></span> &#123;</span><br><span class="line">    webView = <span class="type">WKWebView</span>()</span><br><span class="line">    view = webView</span><br><span class="line">&#125;</span><br><span class="line">webView.loadHTMLString(html, baseURL: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用guard保证detailItem不为空，否则返回</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">guard</span> detailItem != <span class="literal">nil</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用当前main的storyboard，代码添加一个TabBar，使用系统默认的tabBarSystemItem</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let tabBarController = splitViewController.viewControllers[<span class="number">0</span>] <span class="keyword">as</span>! UITabBarController</span><br><span class="line">let storyboard = UIStoryboard(<span class="string">name:</span> <span class="string">"Main"</span>, <span class="string">bundle:</span> nil)</span><br><span class="line">let vc = storyboard.instantiateViewControllerWithIdentifier(<span class="string">"NavController"</span>) <span class="keyword">as</span>! UINavigationController</span><br><span class="line">vc.tabBarItem = UITabBarItem(<span class="string">tabBarSystemItem:</span> .TopRated, <span class="string">tag:</span> <span class="number">1</span>)</span><br><span class="line">tabBarController.viewControllers?.append(vc)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断TabBarItem的标签 navigationController?.tabBarItem.tag == 0</p>
+</li>
+<li>有if的地方，记得考虑else的情况。<h3 id="Project_8_Seven_Swifty_Words">Project 8 Seven Swifty Words</h3></li>
+<li>可以取消 Use Size Classes，手动指定一个size</li>
+<li>默认TextField无法设置高度， that’s because it has a rounded rectangle border around it that must be an exact size. 需要设置borderless</li>
+<li>将Label的Lines置为0，表示可以有多行</li>
+<li><p>遍历view里面的子view的tag，将button和action建立连接，其中letterTapped: 冒号表示接受一个参数</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">for</span> <span class="keyword">subview </span>in view.<span class="keyword">subviews </span>where <span class="keyword">subview.tag </span>== <span class="number">1001</span> &#123;</span><br><span class="line">   let <span class="keyword">btn </span>= <span class="keyword">subview </span>as! UIButton</span><br><span class="line">   letterButtons.append(<span class="keyword">btn)</span><br><span class="line"></span>   <span class="keyword">btn.addTarget(self, </span>action: <span class="string">"letterTapped:"</span>, forControlEvents: .TouchUpInside)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用enumerate进行遍历，使用componentsSeparatedByString字符串分割</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(index, line) <span class="keyword">in</span> lines.<span class="built_in">enumerate</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> parts = line.componentsSeparatedByString(<span class="string">": "</span>)</span><br><span class="line">    <span class="keyword">let</span> answer = parts[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">let</span> clue = parts[<span class="number">1</span>]</span><br><span class="line">    ..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串替换</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">answer.stringByReplacingOccurrencesOfString(<span class="string">"|"</span>, withString: “<span class="string">")</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符统计 solutionWord.characters.count</p>
+</li>
+<li><p>字符串去除空格、换行符</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clueString.<span class="function"><span class="title">stringByTrimmingCharactersInSet</span><span class="params">(.whitespaceAndNewlineCharacterSet()</span></span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>循环 注意 ..&lt; 是一个整体，之间没有空格</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="tag">i</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; letterBits.count</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获得button的titleLabel，hidden为true表示不可点击</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn.titleLabel!.text!</span><br><span class="line">activatedButtons.<span class="function"><span class="title">append</span><span class="params">(btn)</span></span></span><br><span class="line">btn<span class="class">.hidden</span> = true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串拼接 joinWithSeparator(“\n”)</p>
+</li>
+<li>属性观察器 Property Observers，使用didSet<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> score = <span class="number">0</span> &#123;</span><br><span class="line">    <span class="keyword">didSet</span> &#123;</span><br><span class="line">        scoreLabel.text = <span class="string">"Score: <span class="subst">\(score)</span>"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Project_9_Grand_Central_Dispatch">Project 9 Grand Central Dispatch</h3><ol>
+<li>所有的UI工作都在主线程发生，dispatch_get_main_queue获得主线程。<br>it’s never OK to do user interface work on the background thread.</li>
+<li>QoS level set，线程优先级。<ol>
+<li>User Interactive </li>
+<li>User Initiated </li>
+<li>The Utility queue</li>
+<li>The Background queue</li>
+</ol>
+</li>
+<li><p>让代码后台执行，Qos为User Initiated，使用unowned self无主引用，避免强引用。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_async</span>(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, <span class="number">0</span>)) &#123; [unowned <span class="keyword">self</span>] <span class="keyword">in</span></span><br><span class="line">在闭包里的方法必须使用<span class="keyword">self</span>，否则报错</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Note that because our code is now inside a closure, we need to prefix our method calls with self. otherwise Swift complains.</p>
+</li>
+</ol>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift/" rel="tag">#swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/02/Swift学习笔记二/" rel="next" title="Swift学习笔记二">
+                <i class="fa fa-chevron-left"></i> Swift学习笔记二
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/05/Swift学习笔记四/" rel="prev" title="Swift学习笔记四">
+                Swift学习笔记四 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/04/Swift学习笔记三/"
+           data-title="Swift学习笔记三" data-url="http://zane001.github.io/2015/11/04/Swift学习笔记三/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars3.githubusercontent.com/u/3918810?v=3&s=460" alt="zane001" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">zane001</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">It's never too old to learn.</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zane001" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> gitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_7_Whitehouse_Petitions"><span class="nav-number">1.</span> <span class="nav-text">Project 7 Whitehouse Petitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_8_Seven_Swifty_Words"><span class="nav-number">2.</span> <span class="nav-text">Project 8 Seven Swifty Words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_9_Grand_Central_Dispatch"><span class="nav-number">3.</span> <span class="nav-text">Project 9 Grand Central Dispatch</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012-02-23 00:00 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zane001</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zane001"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+</body>
+</html>

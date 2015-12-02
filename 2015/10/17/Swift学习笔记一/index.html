@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java," />
+  <meta name="keywords" content="swift," />
 
 
 
@@ -51,22 +51,43 @@
 
 
 
-<meta name="description" content="面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。
-javaw是java图形化界面时启动的进程。英文单词的简称
-workspace里有很多project，设置快捷键Window–Preferences–General—keys–Content Assist，syso +　alt / ，出来System.out.println();com.itheima.day1 变量名命名准">
+<meta name="description" content="CocoaPods下载第三方库较慢的解决方法，不更新本地库
+解决方法：pod update –verbose –no-repo-update
+
+
+OS X EI Capitan 10.11安装CocoaPods的命令
+
+解决方法：sudo gem install -n /usr/local/bin cocoapods
+
+
+出现 [!] Unable to satisfy the following">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java基础加强---Day1">
-<meta property="og:url" content="http://zane001.github.io/2012/02/23/java基础加强---Day1/index.html">
+<meta property="og:title" content="Swift学习笔记一">
+<meta property="og:url" content="http://zane001.github.io/2015/10/17/Swift学习笔记一/index.html">
 <meta property="og:site_name" content="Zane001's Blog">
-<meta property="og:description" content="面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。
-javaw是java图形化界面时启动的进程。英文单词的简称
-workspace里有很多project，设置快捷键Window–Preferences–General—keys–Content Assist，syso +　alt / ，出来System.out.println();com.itheima.day1 变量名命名准">
-<meta property="og:updated_time" content="2015-12-02T10:09:26.672Z">
+<meta property="og:description" content="CocoaPods下载第三方库较慢的解决方法，不更新本地库
+解决方法：pod update –verbose –no-repo-update
+
+
+OS X EI Capitan 10.11安装CocoaPods的命令
+
+解决方法：sudo gem install -n /usr/local/bin cocoapods
+
+
+出现 [!] Unable to satisfy the following">
+<meta property="og:updated_time" content="2015-12-02T10:59:28.125Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java基础加强---Day1">
-<meta name="twitter:description" content="面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。
-javaw是java图形化界面时启动的进程。英文单词的简称
-workspace里有很多project，设置快捷键Window–Preferences–General—keys–Content Assist，syso +　alt / ，出来System.out.println();com.itheima.day1 变量名命名准">
+<meta name="twitter:title" content="Swift学习笔记一">
+<meta name="twitter:description" content="CocoaPods下载第三方库较慢的解决方法，不更新本地库
+解决方法：pod update –verbose –no-repo-update
+
+
+OS X EI Capitan 10.11安装CocoaPods的命令
+
+解决方法：sudo gem install -n /usr/local/bin cocoapods
+
+
+出现 [!] Unable to satisfy the following">
 
 
 
@@ -78,7 +99,7 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
   };
 </script>
 
-  <title> java基础加强---Day1 | Zane001's Blog </title>
+  <title> Swift学习笔记一 | Zane001's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -228,7 +249,7 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
             
             
               
-                java基础加强---Day1
+                Swift学习笔记一
               
             
           </h1>
@@ -237,8 +258,8 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2012-02-23T00:00:00+08:00" content="2012-02-23">
-              2012-02-23
+            <time itemprop="dateCreated" datetime="2015-10-17T00:00:00+08:00" content="2015-10-17">
+              2015-10-17
             </time>
           </span>
 
@@ -263,8 +284,8 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2012/02/23/java基础加强---Day1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/23/java基础加强---Day1/" itemprop="commentsCount"></span>
+                <a href="/2015/10/17/Swift学习笔记一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/17/Swift学习笔记一/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -284,21 +305,42 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
 
       
         <span itemprop="articleBody"><ol>
-<li>面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。</li>
-<li>javaw是java图形化界面时启动的进程。英文单词的简称</li>
-<li>workspace里有很多project，设置快捷键Window–Preferences–General—keys–<br>Content Assist，syso +　alt / ，出来System.out.println();<br>com.itheima.day1 变量名命名准确</li>
-<li>Perspective (透视图) view(视图)</li>
-<li>编译环境和运行环境要一致， workspace与project环境的配置，体现了extend和override<br>的应用</li>
-<li>配置模块代码 Preferences–Java–Editor–Templates，即可根据自己的需要创建新模板</li>
-<li>配置jdk，选择 Build Path</li>
-<li>静态导入 import static java.lang.Math.* 在程序中就可以不用写Math而直接使用Math的<br>方法。</li>
-<li>overload和override的区分； VariableParameter 接收可变参数，只能出现在参数列表的最<br>后，例如int … args，调用时采用args[]数组的形式访问</li>
-<li>ctrl + shift + / 注释代码 增强的for循环 for(类型 变量名：集合变量名)，集合变量可以<br>是数组或者实现了Iterable接口的集合类</li>
-<li><p>Integer 自动装箱，把int类型装入，不需要转换，Integer和int相加时，自动拆箱成int类型<br>相加；当int类型的值为-128~127时，共享一个元类，超出该范围时，只不共享。FlyWeight享<br>元设计模式，避免大量拥有相同内容的小类的开销(如耗费内存),使大家共享一个类(元类)，有内<br>部状态intrinsic和外部状态extrinsic之分</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String </span><span class="literal">s1</span> = “abcd”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s2</span> = “abcd”<span class="comment">;</span></span><br><span class="line"><span class="label">System.out.println</span>(<span class="literal">s1</span> == <span class="literal">s2</span>)<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s3</span> = new <span class="keyword">String(“a”);</span><br><span class="line"></span><span class="keyword">String </span><span class="literal">s4</span> = new <span class="keyword">String(“a”);</span><br><span class="line"></span><span class="label">System.out.println</span>(<span class="literal">s3</span>.equals(<span class="literal">s4</span>))<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s5</span> = “ja”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s6</span> = “va”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s7</span> = “java”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s8</span> = <span class="literal">s1</span> + <span class="literal">s2</span><span class="comment">;</span></span><br><span class="line"><span class="label">System.out.println</span>(<span class="literal">s7</span> == <span class="literal">s8</span>)<span class="comment">;//false</span></span><br></pre></td></tr></table></figure>
+<li>CocoaPods下载第三方库较慢的解决方法，不更新本地库<blockquote>
+<p>解决方法：pod update –verbose –no-repo-update</p>
+</blockquote>
 </li>
-<li><p>枚举就是让某个类型的变量取值只能为若干固定值中的一个，否则，在编译期间编译器就会<br>报错，从而能够尽早的发现问题。</p>
+<li><p>OS X EI Capitan 10.11安装CocoaPods的命令</p>
+<blockquote>
+<p>解决方法：sudo gem install -n /usr/local/bin cocoapods</p>
+</blockquote>
 </li>
+<li><p>出现 [!] Unable to satisfy the following requirements: - Kingfisher (~&gt; 1.6) required by `Podfile</p>
+<blockquote>
+<p>解决方法：更新本地库 pod update –verbose</p>
+</blockquote>
+</li>
+<li>出现 Illegal Configuration: Container Views cannot be placed in elements that are repeated at runtime.<blockquote>
+<p>解决方法：把Container View换成View</p>
+</blockquote>
+</li>
+<li>EXC_BAD_ACCESS错误<blockquote>
+<p>解决方法：可以这么说，90%的错误来源在于对一个已经释放的对象进行release操作。</p>
+</blockquote>
+</li>
+<li>Xcode快捷键<ol>
+<li>移动代码<blockquote>
+<p>注意：在移动代码时都是移动单行时无需选中，鼠标点击那一行的任何地方都可以移动，多行时需选中。<br>代码左移: command + [<br>代码右移: command + ]</p>
+</blockquote>
+</li>
+<li>代码上移：option + command +[</li>
+<li>代码下移：option + command +]</li>
+<li>将方法或者注释收起、展开<blockquote>
+<p>使用时只要鼠标在方法或注释的范围内就好。<br>收起：option + command + 左箭头<br>展开：option + command + 右箭头</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li>在未保存代码之前，Command + Q关闭Xcode，导致代码丢失，以后关闭Xcode时记得Command + S保存。</li>
 </ol>
 </span>
       
@@ -308,7 +350,7 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag">#java</a>
+            <a href="/tags/swift/" rel="tag">#swift</a>
           
         </div>
       
@@ -317,12 +359,16 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2014/06/29/Android应用开发相关下载资源/" rel="next" title="Android应用开发相关下载资源">
+                <i class="fa fa-chevron-left"></i> Android应用开发相关下载资源
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2012/02/25/java基础加强---Day2/" rel="prev" title="java基础加强---Day2">
-                java基础加强---Day2 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/02/Swift学习笔记二/" rel="prev" title="Swift学习笔记二">
+                Swift学习笔记二 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -350,8 +396,8 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2012/02/23/java基础加强---Day1/"
-           data-title="java基础加强---Day1" data-url="http://zane001.github.io/2012/02/23/java基础加强---Day1/">
+      <div class="ds-thread" data-thread-key="2015/10/17/Swift学习笔记一/"
+           data-title="Swift学习笔记一" data-url="http://zane001.github.io/2015/10/17/Swift学习笔记一/">
       </div>
     
   </div>

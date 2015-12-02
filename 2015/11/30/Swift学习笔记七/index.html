@@ -1,0 +1,791 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="Project 19  Capital Cities
+将 view controller 设置为 map view的代理：Ctrl-dragging from the map view to the orange and white view controller button just above the layout area
+使用地图的 Annotation
+1234567891011121">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习笔记七">
+<meta property="og:url" content="http://zane001.github.io/2015/11/30/Swift学习笔记七/index.html">
+<meta property="og:site_name" content="Zane001's Blog">
+<meta property="og:description" content="Project 19  Capital Cities
+将 view controller 设置为 map view的代理：Ctrl-dragging from the map view to the orange and white view controller button just above the layout area
+使用地图的 Annotation
+1234567891011121">
+<meta property="og:updated_time" content="2015-12-02T12:16:48.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift学习笔记七">
+<meta name="twitter:description" content="Project 19  Capital Cities
+将 view controller 设置为 map view的代理：Ctrl-dragging from the map view to the orange and white view controller button just above the layout area
+使用地图的 Annotation
+1234567891011121">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Swift学习笔记七 | Zane001's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?d433ce1a5c39adaeb9f8137e69df4edd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zane001's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swift学习笔记七
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-30T00:00:00+08:00" content="2015-11-30">
+              2015-11-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/30/Swift学习笔记七/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/30/Swift学习笔记七/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="Project_19_Capital_Cities">Project 19  Capital Cities</h3><ol>
+<li>将 view controller 设置为 map view的代理：Ctrl-dragging from the map view to the orange and white view controller button just above the layout area</li>
+<li><p>使用地图的 Annotation</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> MapKit</span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Capital</span>: <span class="title">NSObject</span>, <span class="title">MKAnnotation</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> title: <span class="type">String</span>?</span><br><span class="line">    <span class="keyword">var</span> coordinate: <span class="type">CLLocationCoordinate2D</span></span><br><span class="line">    <span class="keyword">var</span> info: <span class="type">String</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">init</span>(title: <span class="type">String</span>, coordinate: <span class="type">CLLocationCoordinate2D</span>, info: <span class="type">String</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.title = title</span><br><span class="line">        <span class="keyword">self</span>.coordinate = coordinate</span><br><span class="line">        <span class="keyword">self</span>.info = info</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">mapView.addAnnotations([london, oslo, paris, rome, washington])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复用AnnotationView</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">mapView</span><span class="params">(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!)</span></span> -&gt; <span class="type">MKAnnotationView</span>! &#123;</span><br><span class="line">        <span class="keyword">let</span> identifier = <span class="string">"Capital"</span></span><br><span class="line">        <span class="keyword">if</span> annotation.isKindOfClass(<span class="type">Capital</span>.<span class="keyword">self</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)</span><br><span class="line">            <span class="keyword">if</span> annotationView == <span class="literal">nil</span> &#123;</span><br><span class="line">                annotationView = <span class="type">MKPinAnnotationView</span>(annotation: annotation, reuseIdentifier: identifier)</span><br><span class="line">                annotationView!.canShowCallout = <span class="literal">true</span></span><br><span class="line">                <span class="keyword">let</span> btn = <span class="type">UIButton</span>(type: .<span class="type">DetailDisclosure</span>)</span><br><span class="line">                annotationView!.rightCalloutAccessoryView = btn</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                annotationView!.annotation = annotation</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> annotationView</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">mapView</span><span class="params">(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> captial = view.annotation <span class="keyword">as</span>! <span class="type">Capital</span></span><br><span class="line">        <span class="keyword">let</span> placeName = captial.title</span><br><span class="line">        <span class="keyword">let</span> placeInfo = captial.info</span><br><span class="line">        </span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Project_21_Local_Notifications">Project 21 Local Notifications</h3><ol>
+<li><p>注册Notifications</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">registerLocal</span><span class="params">(sender: AnyObject)</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> notificationSettings = <span class="type">UIUserNotificationSettings</span>(forTypes: [.<span class="type">Alert</span>, .<span class="type">Badge</span>, .<span class="type">Sound</span>], categories: <span class="literal">nil</span>)</span><br><span class="line">        <span class="type">UIApplication</span>.sharedApplication().registerUserNotificationSettings(notificationSettings)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定时执行Notification</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@IBAction</span> func scheduleLocal(<span class="string">sender:</span> AnyObject) &#123;</span><br><span class="line">        </span><br><span class="line">        guard let settings = UIApplication.sharedApplication().currentUserNotificationSettings() <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br><span class="line">        <span class="keyword">if</span> settings.types == .None &#123;</span><br><span class="line">            let ac = UIAlertController(<span class="string">title:</span> <span class="string">"Can't schedule"</span>, <span class="string">message:</span> <span class="string">"permission"</span>, <span class="string">preferredStyle:</span> .Alert)</span><br><span class="line">            ac.addAction(UIAlertAction(<span class="string">title:</span> <span class="string">"OK"</span>, <span class="string">style:</span> .Default, <span class="string">handler:</span> nil))</span><br><span class="line">            presentViewController(ac, <span class="string">animated:</span> <span class="literal">true</span>, <span class="string">completion:</span> nil)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        let notification = UILocalNotification()</span><br><span class="line">        notification.fireDate = NSDate(<span class="string">timeIntervalSinceNow:</span> <span class="number">5</span>)</span><br><span class="line">        notification.alertBody = <span class="string">"Hey man, swipe to unlock!"</span></span><br><span class="line">        notification.alertAction = <span class="string">"WeChat"</span></span><br><span class="line">        notification.soundName = UILocalNotificationDefaultSoundName</span><br><span class="line">        notification.userInfo = [<span class="string">"CustomField1"</span>: <span class="string">"w00t"</span>]</span><br><span class="line">        UIApplication.sharedApplication().scheduleLocalNotification(notification)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>didFinishLaunchingWithOptions</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">application</span><span class="params">(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> options = launchOptions &#123;</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> notification = options[<span class="type">UIApplicationLaunchOptionsLocalNotificationKey</span>] <span class="keyword">as</span>? <span class="type">UILocalNotification</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">let</span> userInfo = notification.userInfo &#123;</span><br><span class="line">                    <span class="keyword">let</span> customField1 = userInfo[<span class="string">"CustomField1"</span>] <span class="keyword">as</span>! <span class="type">String</span></span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">"didFinishLaunchingWithOptions: <span class="subst">\(customField1)</span>"</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  ``` </span><br><span class="line"><span class="number">4</span>. didFinishLaunchingWithOptions</span><br></pre></td></tr></table></figure>
+<p> func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {</p>
+<pre><code><span class="keyword">if</span> <span class="keyword">let</span> userInfo = notification.userInfo {
+    <span class="keyword">let</span> customField1 = userInfo[<span class="string">"CustomField1"</span>] <span class="keyword">as</span>! <span class="type">String</span>
+    <span class="built_in">print</span>(<span class="string">"didReceiveLocalNotification: <span class="subst">\(customField1)</span>"</span>)
+}
+</code></pre><p> }</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### Project 24 Swift Extensions</span></span><br><span class="line"><span class="number">1</span>. <span class="keyword">static</span> means: <span class="keyword">do</span> you want to call this <span class="keyword">method</span> on the <span class="keyword">type</span> itself, <span class="keyword">or</span> <span class="keyword">do</span> you want to call this on an instance <span class="keyword">of</span> the <span class="keyword">type</span>?</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>extension Int {<br>    mutating func plusOne() {<br>        ++self<br>    }<br>static func random(min min: Int, max: Int) -&gt; Int {<br>       return 0<br>    }<br>}</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>. *a <span class="keyword">method</span> belongs to a particular class, struct <span class="keyword">or</span> <span class="keyword">enum</span>. <span class="type">Functions</span>, however, are global beasts: they don't belong to a particular class, so they can be called anywhere.*</span><br><span class="line"><span class="number">3</span>. 如果经常要用到去除字符串的空格，可以使用extension</span><br><span class="line">命名为<span class="type">String</span>+<span class="type">Additions</span>.swift</span><br></pre></td></tr></table></figure>
+<p>extension String {<br>    mutating func trim() {<br>        self = stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())<br>    }<br>}<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">### <span class="number">11</span>-<span class="number">18</span></span></span><br><span class="line"> iBYR  北邮人论坛iOS客户端Swift实现</span><br><span class="line">&gt;设计界面，包括十大、分区、收藏、用户<span class="number">4</span>个Tab Bar，申请开放平台的app key.</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">### <span class="number">11</span>-<span class="number">19</span></span></span><br><span class="line">继续丰富界面，添加一些tab view cell的跳转</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">### <span class="number">11</span>-<span class="number">21</span></span></span><br><span class="line">遵守UIWebViewDelegate协议，但忘记写webView.delegate = self</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">### <span class="number">11</span>-<span class="number">22</span> Getting Started with Core Data Tutorial</span></span><br><span class="line"><span class="number">1.</span> Ctrl-drag from the table view to the yellow view controller icon, click on dataSource</span><br><span class="line"><span class="number">2.</span> <span class="function">override func <span class="title">viewDidLoad</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        super.viewDidLoad()</span><br><span class="line">        title = <span class="string">"\"The List\""</span></span><br><span class="line">        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: <span class="string">"Cell"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"><span class="number">3.</span> <span class="comment">// MARK:  加标记</span></span><br></pre></td></tr></table></figure></p>
+<p><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del><del>~</del>~~  numberOfRowsInSection <del>~</del><del>~</del><del>~</del><del>~</del>~~<br>func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell {<br>        let cell = tableView.dequeueReusableCellWithIdentifier(“Cell”)<br>        let person = people[indexPath.row]<br>        cell!.textLabel!.text = person.valueForKey(“name”) as? String<br>        return cell!<br>    }<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4.</span> 显示TextField 的输入框</span><br></pre></td></tr></table></figure></p>
+<p>  alert.addTextFieldWithConfigurationHandler { (textField: UITextField) -&gt; Void in</p>
+<p>  }<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5.</span> 添加数据，重载tableView的数据</span><br></pre></td></tr></table></figure></p>
+<p>  let textField = alert.textFields!.first<br>  self.names.append(textField!.text!)<br>  self.tableView.reloadData()<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6.</span> 存数据</span><br></pre></td></tr></table></figure></p>
+<p>func saveName(name: String) {<br>        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate<br>        let managedContext = appDelegate.managedObjectContext</p>
+<pre><code>    <span class="keyword">let</span> entity = <span class="type">NSEntityDescription</span>.entityForName(<span class="string">"Person"</span>, inManagedObjectContext: managedContext)
+    <span class="keyword">let</span> person = <span class="type">NSManagedObject</span>(entity: entity!, insertIntoManagedObjectContext: managedContext)
+
+    person.setValue(name, forKey: <span class="string">"name"</span>)
+
+    <span class="keyword">do</span> {
+        <span class="keyword">try</span> managedContext.save()
+        people.append(person)
+    } <span class="keyword">catch</span> <span class="keyword">let</span> error <span class="keyword">as</span> <span class="type">NSError</span> {
+        <span class="built_in">print</span>(<span class="string">"Could not save <span class="subst">\(error)</span>, <span class="subst">\(error.userInfo)</span>"</span>)
+    }
+}
+</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">7.</span> 取数据</span><br></pre></td></tr></table></figure>
+<p>  override func viewWillAppear(animated: Bool) {<br>        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate<br>        let managedObjectContext = appDelegate.managedObjectContext</p>
+<pre><code>    <span class="keyword">let</span> fetchRequest = <span class="type">NSFetchRequest</span>(entityName: <span class="string">"Person"</span>)
+
+    <span class="keyword">do</span> {
+        <span class="keyword">let</span> results = <span class="keyword">try</span> managedObjectContext.executeFetchRequest(fetchRequest)
+        people = results <span class="keyword">as</span>! [<span class="type">NSManagedObject</span>]
+    } <span class="keyword">catch</span> <span class="keyword">let</span> error <span class="keyword">as</span> <span class="type">NSError</span> {
+        <span class="built_in">print</span>(<span class="string">"Could not fetch <span class="subst">\(error)</span>, <span class="subst">\(error.userInfo)</span>"</span>)
+    }
+}
+</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">8.</span>  tableView 返回<span class="literal">true</span>表示可以编辑</span><br></pre></td></tr></table></figure>
+<p>  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -&gt; Bool {<br>        return true<br>  }<br>```</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift/" rel="tag">#swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/15/Swift学习笔记六/" rel="next" title="Swift学习笔记六">
+                <i class="fa fa-chevron-left"></i> Swift学习笔记六
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/30/Swift学习笔记七/"
+           data-title="Swift学习笔记七" data-url="http://zane001.github.io/2015/11/30/Swift学习笔记七/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars3.githubusercontent.com/u/3918810?v=3&s=460" alt="zane001" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">zane001</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">It's never too old to learn.</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zane001" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> gitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_19_Capital_Cities"><span class="nav-number">1.</span> <span class="nav-text">Project 19  Capital Cities</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_21_Local_Notifications"><span class="nav-number">2.</span> <span class="nav-text">Project 21 Local Notifications</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012-02-23 00:00 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zane001</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zane001"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+</body>
+</html>

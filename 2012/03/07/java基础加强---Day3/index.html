@@ -51,22 +51,28 @@
 
 
 
-<meta name="description" content="面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。
-javaw是java图形化界面时启动的进程。英文单词的简称
-workspace里有很多project，设置快捷键Window–Preferences–General—keys–Content Assist，syso +　alt / ，出来System.out.println();com.itheima.day1 变量名命名准">
+<meta name="description" content="19.
+得到某个类的所有构造方法Constructor[] constructors
+= Class.forName(“java.lang.String”).getConstructors();
+得到某个类的某一个构造方法Constructor constructor
+= Class.forName(“java.lang.String”).getConstructor(StringBuffer.C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java基础加强---Day1">
-<meta property="og:url" content="http://zane001.github.io/2012/02/23/java基础加强---Day1/index.html">
+<meta property="og:title" content="java基础加强---Day3">
+<meta property="og:url" content="http://zane001.github.io/2012/03/07/java基础加强---Day3/index.html">
 <meta property="og:site_name" content="Zane001's Blog">
-<meta property="og:description" content="面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。
-javaw是java图形化界面时启动的进程。英文单词的简称
-workspace里有很多project，设置快捷键Window–Preferences–General—keys–Content Assist，syso +　alt / ，出来System.out.println();com.itheima.day1 变量名命名准">
-<meta property="og:updated_time" content="2015-12-02T10:09:26.672Z">
+<meta property="og:description" content="19.
+得到某个类的所有构造方法Constructor[] constructors
+= Class.forName(“java.lang.String”).getConstructors();
+得到某个类的某一个构造方法Constructor constructor
+= Class.forName(“java.lang.String”).getConstructor(StringBuffer.C">
+<meta property="og:updated_time" content="2015-12-02T10:34:55.092Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java基础加强---Day1">
-<meta name="twitter:description" content="面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。
-javaw是java图形化界面时启动的进程。英文单词的简称
-workspace里有很多project，设置快捷键Window–Preferences–General—keys–Content Assist，syso +　alt / ，出来System.out.println();com.itheima.day1 变量名命名准">
+<meta name="twitter:title" content="java基础加强---Day3">
+<meta name="twitter:description" content="19.
+得到某个类的所有构造方法Constructor[] constructors
+= Class.forName(“java.lang.String”).getConstructors();
+得到某个类的某一个构造方法Constructor constructor
+= Class.forName(“java.lang.String”).getConstructor(StringBuffer.C">
 
 
 
@@ -78,7 +84,7 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
   };
 </script>
 
-  <title> java基础加强---Day1 | Zane001's Blog </title>
+  <title> java基础加强---Day3 | Zane001's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -228,7 +234,7 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
             
             
               
-                java基础加强---Day1
+                java基础加强---Day3
               
             
           </h1>
@@ -237,8 +243,8 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2012-02-23T00:00:00+08:00" content="2012-02-23">
-              2012-02-23
+            <time itemprop="dateCreated" datetime="2012-03-07T00:00:00+08:00" content="2012-03-07">
+              2012-03-07
             </time>
           </span>
 
@@ -263,8 +269,8 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2012/02/23/java基础加强---Day1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/23/java基础加强---Day1/" itemprop="commentsCount"></span>
+                <a href="/2012/03/07/java基础加强---Day3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/03/07/java基础加强---Day3/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -283,22 +289,13 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
       
 
       
-        <span itemprop="articleBody"><ol>
-<li>面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。</li>
-<li>javaw是java图形化界面时启动的进程。英文单词的简称</li>
-<li>workspace里有很多project，设置快捷键Window–Preferences–General—keys–<br>Content Assist，syso +　alt / ，出来System.out.println();<br>com.itheima.day1 变量名命名准确</li>
-<li>Perspective (透视图) view(视图)</li>
-<li>编译环境和运行环境要一致， workspace与project环境的配置，体现了extend和override<br>的应用</li>
-<li>配置模块代码 Preferences–Java–Editor–Templates，即可根据自己的需要创建新模板</li>
-<li>配置jdk，选择 Build Path</li>
-<li>静态导入 import static java.lang.Math.* 在程序中就可以不用写Math而直接使用Math的<br>方法。</li>
-<li>overload和override的区分； VariableParameter 接收可变参数，只能出现在参数列表的最<br>后，例如int … args，调用时采用args[]数组的形式访问</li>
-<li>ctrl + shift + / 注释代码 增强的for循环 for(类型 变量名：集合变量名)，集合变量可以<br>是数组或者实现了Iterable接口的集合类</li>
-<li><p>Integer 自动装箱，把int类型装入，不需要转换，Integer和int相加时，自动拆箱成int类型<br>相加；当int类型的值为-128~127时，共享一个元类，超出该范围时，只不共享。FlyWeight享<br>元设计模式，避免大量拥有相同内容的小类的开销(如耗费内存),使大家共享一个类(元类)，有内<br>部状态intrinsic和外部状态extrinsic之分</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String </span><span class="literal">s1</span> = “abcd”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s2</span> = “abcd”<span class="comment">;</span></span><br><span class="line"><span class="label">System.out.println</span>(<span class="literal">s1</span> == <span class="literal">s2</span>)<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s3</span> = new <span class="keyword">String(“a”);</span><br><span class="line"></span><span class="keyword">String </span><span class="literal">s4</span> = new <span class="keyword">String(“a”);</span><br><span class="line"></span><span class="label">System.out.println</span>(<span class="literal">s3</span>.equals(<span class="literal">s4</span>))<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s5</span> = “ja”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s6</span> = “va”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s7</span> = “java”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s8</span> = <span class="literal">s1</span> + <span class="literal">s2</span><span class="comment">;</span></span><br><span class="line"><span class="label">System.out.println</span>(<span class="literal">s7</span> == <span class="literal">s8</span>)<span class="comment">;//false</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>枚举就是让某个类型的变量取值只能为若干固定值中的一个，否则，在编译期间编译器就会<br>报错，从而能够尽早的发现问题。</p>
-</li>
+        <span itemprop="articleBody"><h4 id="19-">19.</h4><ol>
+<li>得到某个类的所有构造方法<br><code>Constructor[] constructors
+= Class.forName(“java.lang.String”).getConstructors();</code></li>
+<li>得到某个类的某一个构造方法<br><code>Constructor constructor
+= Class.forName(“java.lang.String”).getConstructor(StringBuffer.Class);</code>获得方法时要用到类型</li>
+<li>创建实例对象<br>一、通常方式创建<br><code>tring s = new String(new StringBuffer(“abc”));</code><br>二、反射方式创建<br><code>String s = (String)constructor.newInstance(new StringBuffer(“abc”));</code><br>调用获得的方法时，要用到相同类型的实例对象</li>
+<li>Class.newInstance()方法<br><code>String s = (String)Class.forName(“java.lang.String”).newInstance();</code><br>内部先得到默认的构造方法，然后用该构造方法创建实例对象<h4 id="20、Field类_alt_+_shift_+_s快捷键得到source选项下面的方法">20、Field类 alt + shift + s快捷键得到source选项下面的方法</h4></li>
 </ol>
 </span>
       
@@ -317,12 +314,16 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2012/02/25/java基础加强---Day2/" rel="next" title="java基础加强---Day2">
+                <i class="fa fa-chevron-left"></i> java基础加强---Day2
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2012/02/25/java基础加强---Day2/" rel="prev" title="java基础加强---Day2">
-                java基础加强---Day2 <i class="fa fa-chevron-right"></i>
+              <a href="/2013/03/15/This-Is-How-I-Work/" rel="prev" title="This-Is-How-I-Work">
+                This-Is-How-I-Work <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -350,8 +351,8 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2012/02/23/java基础加强---Day1/"
-           data-title="java基础加强---Day1" data-url="http://zane001.github.io/2012/02/23/java基础加强---Day1/">
+      <div class="ds-thread" data-thread-key="2012/03/07/java基础加强---Day3/"
+           data-title="java基础加强---Day3" data-url="http://zane001.github.io/2012/03/07/java基础加强---Day3/">
       </div>
     
   </div>
@@ -451,7 +452,7 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#19-"><span class="nav-number">1.</span> <span class="nav-text">19.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20、Field类_alt_+_shift_+_s快捷键得到source选项下面的方法"><span class="nav-number">2.</span> <span class="nav-text">20、Field类 alt + shift + s快捷键得到source选项下面的方法</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

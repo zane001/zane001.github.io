@@ -1,0 +1,831 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="Project 14 Whack a Penguin
+..&amp;lt; 误写成 &amp;lt;..
+使用 SKCropNode 显示、隐藏图片
+123let cropNode = SKCropNode()cropNode.maskNode = nil 	// 都显示cropNode.maskNode = SKSpriteNode(imageNamed: &quot;whackMask&quot;)
+
+使用 SKAction、S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift学习笔记六">
+<meta property="og:url" content="http://zane001.github.io/2015/11/15/Swift学习笔记六/index.html">
+<meta property="og:site_name" content="Zane001's Blog">
+<meta property="og:description" content="Project 14 Whack a Penguin
+..&amp;lt; 误写成 &amp;lt;..
+使用 SKCropNode 显示、隐藏图片
+123let cropNode = SKCropNode()cropNode.maskNode = nil 	// 都显示cropNode.maskNode = SKSpriteNode(imageNamed: &quot;whackMask&quot;)
+
+使用 SKAction、S">
+<meta property="og:updated_time" content="2015-12-02T11:59:39.030Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift学习笔记六">
+<meta name="twitter:description" content="Project 14 Whack a Penguin
+..&amp;lt; 误写成 &amp;lt;..
+使用 SKCropNode 显示、隐藏图片
+123let cropNode = SKCropNode()cropNode.maskNode = nil 	// 都显示cropNode.maskNode = SKSpriteNode(imageNamed: &quot;whackMask&quot;)
+
+使用 SKAction、S">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Swift学习笔记六 | Zane001's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?d433ce1a5c39adaeb9f8137e69df4edd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zane001's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swift学习笔记六
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-15T00:00:00+08:00" content="2015-11-15">
+              2015-11-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/15/Swift学习笔记六/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/15/Swift学习笔记六/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="Project_14_Whack_a_Penguin">Project 14 Whack a Penguin</h3><ol>
+<li><strong>..&lt;</strong> 误写成 <strong>&lt;..</strong></li>
+<li><p>使用 SKCropNode 显示、隐藏图片</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let cropNode = <span class="function"><span class="title">SKCropNode</span><span class="params">()</span></span></span><br><span class="line">cropNode<span class="class">.maskNode</span> = nil 	<span class="comment">// 都显示</span></span><br><span class="line">cropNode<span class="class">.maskNode</span> = <span class="function"><span class="title">SKSpriteNode</span><span class="params">(imageNamed: <span class="string">"whackMask"</span>)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 SKAction、SKTexture</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">charNode.<span class="function"><span class="title">runAction</span><span class="params">(SKAction.moveByX(<span class="number">0</span>, y: <span class="number">80</span>, duration: <span class="number">0.05</span>)</span></span>)</span><br><span class="line">charNode<span class="class">.texture</span> = <span class="function"><span class="title">SKTexture</span><span class="params">(imageNamed: “penguinGood<span class="string">")</span></span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第一个 hideTime 为外部变量，第二个为内部变量，使用时必须带外部参数，show(hideTime: 1)，参数的含义比较明显。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">show</span><span class="params">(hideTime hideTime: Double)</span></span> &#123;…&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 dispatch_time 、dispatch_after，当前时间为 DISPATCH_TIME_NOW</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">runAfterDelay</span><span class="params">(delay: NSTimeInterval, block: dispatch_block_t)</span></span> &#123;</span><br><span class="line">	<span class="keyword">let</span> time = dispatch_time(<span class="type">DISPATCH_TIME_NOW</span>, <span class="type">Int64</span>(delay * <span class="type">Double</span>(<span class="type">NSEC_PER_SEC</span>)))	<span class="comment">// 在秒和纳秒之间转换</span></span><br><span class="line">	dispatch_after(time, dispatch_get_main_queue(), block)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 SKAction 的 waitForDuration/runBlock/sequence 方法，其中 sequence 是一系列的 action</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">hit</span><span class="params">()</span></span> &#123;</span><br><span class="line">    isHit = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">let</span> delay = <span class="type">SKAction</span>.waitForDuration(<span class="number">0.25</span>)</span><br><span class="line">    <span class="keyword">let</span> hide = <span class="type">SKAction</span>.moveByX(<span class="number">0</span>, y: -<span class="number">80</span>, duration: <span class="number">0.5</span>)</span><br><span class="line">    <span class="keyword">let</span> notVisible = <span class="type">SKAction</span>.runBlock &#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>] <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">self</span>.visible = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    charNode.runAction(<span class="type">SKAction</span>.sequence([delay, hide, notVisible]))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 SKAction 的 playSoundFileNamed 方法播放音乐。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let whackSlot = node.parent!<span class="class">.parent</span> as! WhackSlot</span><br><span class="line">SKAction<span class="class">.playSoundFileNamed</span></span><br><span class="line">whackSlot<span class="class">.charNode</span><span class="class">.xScale</span> = <span class="number">0.85</span> <span class="comment">// x坐标方向缩小或者放大</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Project_15_Animation">Project 15 Animation</h3><ol>
+<li>Ctrl-drag 沿对角线，可以给自身添加约束。</li>
+<li><p>使用 UIImageView，包括一个 UIImage</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">var</span> imageView: UIImageView!</span><br><span class="line">imageView = <span class="function"><span class="title">UIImageView</span><span class="params">(image: UIImage(named: “penguin”)</span></span>)</span><br><span class="line">imageView<span class="class">.center</span> = <span class="function"><span class="title">CGPoint</span><span class="params">(x: <span class="number">512</span>, y: <span class="number">384</span>)</span></span></span><br><span class="line">view.<span class="function"><span class="title">addSubview</span><span class="params">(imageView)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>默认的动画是 ease-in-ease-out animation</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIView.animateWithDuration(<span class="number">1</span>, delay: <span class="number">0</span>, usingSpringWithDamping: <span class="number">0.5</span>, initialSpringVelocity: <span class="number">5</span>, options: [], 闭包) 尾随闭包</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>动画的移动、旋转</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self<span class="class">.imageView</span><span class="class">.transform</span> = <span class="function"><span class="title">CGAffineTransformMakeScale</span><span class="params">(<span class="number">2</span>, <span class="number">2</span>)</span></span></span><br><span class="line">CGAffineTransformIdentity 	<span class="comment">//恢复原状</span></span><br><span class="line">self<span class="class">.imageView</span><span class="class">.transform</span> = <span class="function"><span class="title">CGAffineTransformMakeTranslation</span><span class="params">(-<span class="number">256</span>, -<span class="number">256</span>)</span></span>  <span class="comment">// 移动，从当前位置减去256</span></span><br><span class="line">self<span class="class">.imageView</span><span class="class">.transform</span> = <span class="function"><span class="title">CGAffineTransformMakeRotation</span><span class="params">(CGFloat(M_2_PI)</span></span>) 	<span class="comment">// 旋转90度，总是找最短路径旋转</span></span><br><span class="line">self<span class="class">.imageView</span><span class="class">.alpha</span> = <span class="number">0.1</span>  <span class="comment">// 透明度</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Project_16_JavaScript_Injection">Project 16 JavaScript Injection</h3><ol>
+<li>StoryBoard上的实黄线：”this is where you view is,” 虚黄线： “this is where your view will be when your code runs.”</li>
+<li><p>给应用添加扩展，新建 iOS &gt; Application Extension &gt; Action Extension</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> inputItem = extensionContext!.inputItems.first <span class="keyword">as</span>? <span class="type">NSExtensionItem</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> itemProvider = inputItem.attachments?.first <span class="keyword">as</span>? <span class="type">NSItemProvider</span> &#123;</span><br><span class="line">         itemProvider.loadItemForTypeIdentifier(kUTTypePropertyList <span class="keyword">as</span> <span class="type">String</span>, options: <span class="literal">nil</span>, completionHandler: &#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>] (dict, error)<span class="keyword">in</span></span><br><span class="line">         <span class="keyword">let</span> itemDirectory = dict <span class="keyword">as</span>! <span class="type">NSDictionary</span></span><br><span class="line">         <span class="keyword">let</span> javaScriptValues = itemDirectory[<span class="type">NSExtensionJavaScriptPreprocessingResultsKey</span>] <span class="keyword">as</span>! <span class="type">NSDictionary</span></span><br><span class="line">         <span class="built_in">print</span>(javaScriptValues)</span><br><span class="line">         &#125;)</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 info.plist 添加 JavaScript 支持。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSExtension</span> &gt; <span class="built_in">NSExtensionAttributes</span> &gt; <span class="built_in">NSExtensionActivationRule</span> &gt; <span class="built_in">NSExtensionActivationSupportsWebPageWithMaxCount</span></span><br><span class="line"><span class="built_in">NSExtension</span> &gt; <span class="built_in">NSExtensionAttributes</span> &gt; <span class="built_in">NSExtensionJavaScriptPreprocessingFile</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>处理 JavaScript</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">done</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> item = <span class="type">NSExtensionItem</span>()</span><br><span class="line">    <span class="keyword">let</span> webDictionary = [<span class="type">NSExtensionJavaScriptPreprocessingResultsKey</span>: [<span class="string">"customJavaScript"</span>: script.text]]</span><br><span class="line">    <span class="keyword">let</span> customJavaScript = <span class="type">NSItemProvider</span>(item: webDictionary, typeIdentifier: kUTTypePropertyList <span class="keyword">as</span> <span class="type">String</span>)</span><br><span class="line">    item.attachments = [customJavaScript]</span><br><span class="line">    extensionContext!.completeRequestReturningItems([item], completionHandler: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加键盘的监听器</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let notificationCenter = NSNotificationCenter.<span class="function"><span class="title">defaultCenter</span><span class="params">()</span></span></span><br><span class="line">notificationCenter.<span class="function"><span class="title">addObserver</span><span class="params">(self, selector: <span class="string">"adjustForKeyboard"</span>, name: UIKeyboardWillHideNotification, object: nil)</span></span></span><br><span class="line">notificationCenter.<span class="function"><span class="title">addObserver</span><span class="params">(self, selector: <span class="string">"adjustForKeyboard"</span>, name: UIKeyboardWillChangeFrameNotification, object: nil)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自动调整键盘位置</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">adjustForKeyboard</span><span class="params">(notification: NSNotification)</span></span> &#123;</span><br><span class="line">      <span class="keyword">let</span> userInfo = notification.userInfo!</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">let</span> keyboardScreenEndFrame = (userInfo[<span class="type">UIKeyboardFrameEndUserInfoKey</span>] <span class="keyword">as</span>! <span class="type">NSValue</span>).<span class="type">CGRectValue</span>()</span><br><span class="line">      <span class="keyword">let</span> keyboardViewEndFrame = view.convertRect(keyboardScreenEndFrame, fromView: view.window)</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">if</span> notification.name == <span class="type">UIKeyboardWillHideNotification</span> &#123;</span><br><span class="line">          script.contentInset = <span class="type">UIEdgeInsetsZero</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          script.contentInset = <span class="type">UIEdgeInsets</span>(top: <span class="number">0</span>, <span class="keyword">left</span>: <span class="number">0</span>, bottom: keyboardViewEndFrame.height, <span class="keyword">right</span>: <span class="number">0</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      script.scrollIndicatorInsets = script.contentInset  <span class="comment">// 不随view的滚动而滚动</span></span><br><span class="line">      </span><br><span class="line">      <span class="keyword">let</span> selectedRange = script.selectedRange</span><br><span class="line">      script.scrollRangeToVisible(selectedRange)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Project_17_Swifty_Ninja">Project 17 Swifty Ninja</h3><ol>
+<li><p>使用 physicsWorld 的 gravity、speed 属性</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">physicsWorld<span class="class">.gravity</span> = <span class="function"><span class="title">CGVector</span><span class="params">(dx: <span class="number">0</span>, dy: -<span class="number">6</span>)</span></span></span><br><span class="line">physicsWorld<span class="class">.speed</span> = <span class="number">0.85</span></span><br><span class="line">SKShapeNode 的</span><br><span class="line">touchesBegan/touchesMoved/touchesEnded/touchesCancelled 方法。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 guard let ，否则 return，使用 SKAction 的 fadeOutWithDuration 方法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">guard</span> <span class="keyword">let</span> touch = touches.first <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line">activeSliceBG.runAction(<span class="type">SKAction</span>.fadeOutWithDuration(<span class="number">0.25</span>))  <span class="comment">//逐渐消失</span></span><br><span class="line">activeSliceFG.removeAllActions()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 UIBezierPath</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let <span class="built_in">path</span> = UIBezierPath()</span><br><span class="line"><span class="built_in">path</span>.moveToPoint(activeSlicePoints[<span class="number">0</span>])</span><br><span class="line"><span class="flow">for</span> (var i=<span class="number">1</span>; i&lt;activeSlicePoints.count; ++i) &#123;</span><br><span class="line">    <span class="built_in">path</span>.addLineToPoint(activeSlicePoints[i])</span><br><span class="line">&#125;</span><br><span class="line">activeSliceBG.<span class="built_in">path</span> = <span class="built_in">path</span>.CGPath	//将 UIBezierPath 转换为 CGPath</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>先创建 action，然后 runAction(action)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> swooshSound = <span class="type">SKAction</span>.playSoundFileNamed(soundName, waitForCompletion: <span class="literal">true</span>)</span><br><span class="line">runAction(swooshSound) &#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>] <span class="keyword">in</span></span><br><span class="line">     <span class="keyword">self</span>.swooshSoundActive = <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建枚举类，使用 SKPhysicsBody，CGVector 中属性为相对值</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">ForceBomb</span> &#123;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="constant">Never</span>, <span class="constant">Always</span>, <span class="constant">Default</span></span><br><span class="line">&#125;</span><br><span class="line">  func createEnemy(forceBomb <span class="symbol">forceBomb:</span> <span class="constant">ForceBomb</span> = .<span class="constant">Default</span>) &#123;</span><br><span class="line">  	enemy.physicsBody = <span class="constant">SKPhysicsBody</span>(<span class="symbol">circleOfRadius:</span> <span class="number">64</span>)</span><br><span class="line">    enemy.physicsBody!.velocity = <span class="constant">CGVector</span>(<span class="symbol">dx:</span> randomXVelocity * <span class="number">40</span>, <span class="symbol">dy:</span> randomYVelocity * <span class="number">40</span>)</span><br><span class="line">    enemy.physicsBody!.angularVelocity = randomAngularVelocity</span><br><span class="line">    enemy.physicsBody!.collisionBitMask = <span class="number">0</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 AVAudioPlayer 播放音乐</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import AVFoundation</span><br><span class="line">  let path = NSBundle.<span class="function"><span class="title">mainBundle</span><span class="params">()</span></span>.<span class="function"><span class="title">pathForResource</span><span class="params">(<span class="string">"sliceBombFuse"</span>, ofType: nil)</span></span>!</span><br><span class="line">  let url = <span class="function"><span class="title">NSURL</span><span class="params">(fileURLWithPath: path)</span></span></span><br><span class="line">  let sound = try! <span class="function"><span class="title">AVAudioPlayer</span><span class="params">(contentsOfURL: url)</span></span></span><br><span class="line">  bombSoundEffect = sound</span><br><span class="line">  sound.<span class="function"><span class="title">play</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将枚举类型映射为Int类型，然后可以使用 rawValue</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">SequenceType</span>: <span class="title">Int</span> &#123;</span></span><br><span class="line">    <span class="keyword">case</span> <span class="constant">OneNoBomb</span>, <span class="constant">One</span>, <span class="constant">TwoWithOneBomb</span>, <span class="constant">Two</span>, <span class="constant">Three</span>, <span class="constant">Four</span>, <span class="constant">Chain</span>, <span class="constant">FastChain</span></span><br><span class="line">&#125;</span><br><span class="line">    let nextSequence = <span class="constant">SequenceType</span>(<span class="symbol">rawValue:</span> <span class="constant">Int</span>(<span class="constant">RandomInt</span>(<span class="number">2</span>, <span class="symbol">max:</span> <span class="number">7</span>)))!  /<span class="regexp">/使用rawValue需要强制解包</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 SKAction 的 group、sequence</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let scaleOut = SKAction.<span class="function"><span class="title">scaleTo</span><span class="params">(<span class="number">0.001</span>, duration: <span class="number">0.02</span>)</span></span></span><br><span class="line">let fadeOut = SKAction.<span class="function"><span class="title">fadeOutWithDuration</span><span class="params">(<span class="number">0.2</span>)</span></span></span><br><span class="line">let group = SKAction.<span class="function"><span class="title">group</span><span class="params">([scaleOut, fadeOut])</span></span></span><br><span class="line">let seq = SKAction.<span class="function"><span class="title">sequence</span><span class="params">([group, SKAction.removeFromParent()</span></span>])</span><br><span class="line">node.<span class="function"><span class="title">runAction</span><span class="params">(seq)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>userInteractionEnabled 是否停止用户交互</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">physicsWorld.speed = <span class="number">0</span></span><br><span class="line">userInteractionEnabled = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Project_18_iAd_and_Debugging">Project 18 iAd and Debugging</h3><ol>
+<li><p>ADBannerView 的使用，设置约束</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import iAd      </span><br><span class="line">  <span class="tag">var</span> bannerView: ADBannerView!</span><br><span class="line">  bannerView = <span class="function"><span class="title">ADBannerView</span><span class="params">(adType: .Banner)</span></span></span><br><span class="line">  bannerView<span class="class">.translatesAutoresizingMaskIntoConstraints</span> = false</span><br><span class="line">  bannerView<span class="class">.delegate</span> = self</span><br><span class="line">  bannerView<span class="class">.hidden</span> = true</span><br><span class="line">  view.<span class="function"><span class="title">addSubview</span><span class="params">(bannerView)</span></span></span><br><span class="line">  let viewsDictionary = [<span class="string">"bannerView"</span>: bannerView]</span><br><span class="line">  view.<span class="function"><span class="title">addConstraints</span><span class="params">(NSLayoutConstraint.constraintsWithVisualFormat(<span class="string">"H:|[bannerView]|"</span>, options: [], metrics: nil, views: viewsDictionary)</span></span>)</span><br><span class="line">  view.<span class="function"><span class="title">addConstraints</span><span class="params">(NSLayoutConstraint.constraintsWithVisualFormat(<span class="string">"W:|[bannerView]|"</span>, options: [], metrics: nil, views: viewsDictionary)</span></span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AppDelegate means that we can easily use it to store app-wide information. 获得 AppDelegate 的引用</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let appDelegate = UIApplication.<span class="function"><span class="title">sharedApplication</span><span class="params">()</span></span><span class="class">.delegate</span> as! AppDelegate</span><br><span class="line">view.<span class="function"><span class="title">addSubview</span><span class="params">(appDelegate.bannerView)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传到App Store时，Xcode自动将 assert 禁用掉</p>
+</li>
+<li>可以在断点上 Edit Breakpoint，可以在 breakpoint navigator 里添加 Exceptions</li>
+<li>调试 Debug &gt; View Debugging &gt; Show View Frames / Capture View Hierarchy</li>
+</ol>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift/" rel="tag">#swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/07/Swift学习笔记五/" rel="next" title="Swift学习笔记五">
+                <i class="fa fa-chevron-left"></i> Swift学习笔记五
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/30/Swift学习笔记七/" rel="prev" title="Swift学习笔记七">
+                Swift学习笔记七 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/15/Swift学习笔记六/"
+           data-title="Swift学习笔记六" data-url="http://zane001.github.io/2015/11/15/Swift学习笔记六/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars3.githubusercontent.com/u/3918810?v=3&s=460" alt="zane001" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">zane001</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">It's never too old to learn.</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zane001" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> gitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_14_Whack_a_Penguin"><span class="nav-number">1.</span> <span class="nav-text">Project 14 Whack a Penguin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_15_Animation"><span class="nav-number">2.</span> <span class="nav-text">Project 15 Animation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_16_JavaScript_Injection"><span class="nav-number">3.</span> <span class="nav-text">Project 16 JavaScript Injection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_17_Swifty_Ninja"><span class="nav-number">4.</span> <span class="nav-text">Project 17 Swifty Ninja</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project_18_iAd_and_Debugging"><span class="nav-number">5.</span> <span class="nav-text">Project 18 iAd and Debugging</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012-02-23 00:00 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zane001</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zane001"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+</body>
+</html>

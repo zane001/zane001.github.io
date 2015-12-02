@@ -51,22 +51,19 @@
 
 
 
-<meta name="description" content="面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。
-javaw是java图形化界面时启动的进程。英文单词的简称
-workspace里有很多project，设置快捷键Window–Preferences–General—keys–Content Assist，syso +　alt / ，出来System.out.println();com.itheima.day1 变量名命名准">
+<meta name="description" content="13、用普通类实现枚举功能（1）私有的构造方法（2）每个元素分别用一个共有静态成员变量表示（3）采用抽象方法就可以将大量的if、else语句转移成一个个独立的类
+14、枚举的基本应用，它是一个特殊的类，其中每一个元素都是该类的一个实例对象，元素必须位于枚举体中最开始的部分，后面以分号结束，不能把成员变量等放在枚举元素的前面，定义一个WeekDay的枚举，调用values、valueOf、name、">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java基础加强---Day1">
-<meta property="og:url" content="http://zane001.github.io/2012/02/23/java基础加强---Day1/index.html">
+<meta property="og:title" content="java基础加强---Day2">
+<meta property="og:url" content="http://zane001.github.io/2012/02/25/java基础加强---Day2/index.html">
 <meta property="og:site_name" content="Zane001's Blog">
-<meta property="og:description" content="面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。
-javaw是java图形化界面时启动的进程。英文单词的简称
-workspace里有很多project，设置快捷键Window–Preferences–General—keys–Content Assist，syso +　alt / ，出来System.out.println();com.itheima.day1 变量名命名准">
-<meta property="og:updated_time" content="2015-12-02T10:09:26.672Z">
+<meta property="og:description" content="13、用普通类实现枚举功能（1）私有的构造方法（2）每个元素分别用一个共有静态成员变量表示（3）采用抽象方法就可以将大量的if、else语句转移成一个个独立的类
+14、枚举的基本应用，它是一个特殊的类，其中每一个元素都是该类的一个实例对象，元素必须位于枚举体中最开始的部分，后面以分号结束，不能把成员变量等放在枚举元素的前面，定义一个WeekDay的枚举，调用values、valueOf、name、">
+<meta property="og:updated_time" content="2015-12-02T10:25:24.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java基础加强---Day1">
-<meta name="twitter:description" content="面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。
-javaw是java图形化界面时启动的进程。英文单词的简称
-workspace里有很多project，设置快捷键Window–Preferences–General—keys–Content Assist，syso +　alt / ，出来System.out.println();com.itheima.day1 变量名命名准">
+<meta name="twitter:title" content="java基础加强---Day2">
+<meta name="twitter:description" content="13、用普通类实现枚举功能（1）私有的构造方法（2）每个元素分别用一个共有静态成员变量表示（3）采用抽象方法就可以将大量的if、else语句转移成一个个独立的类
+14、枚举的基本应用，它是一个特殊的类，其中每一个元素都是该类的一个实例对象，元素必须位于枚举体中最开始的部分，后面以分号结束，不能把成员变量等放在枚举元素的前面，定义一个WeekDay的枚举，调用values、valueOf、name、">
 
 
 
@@ -78,7 +75,7 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
   };
 </script>
 
-  <title> java基础加强---Day1 | Zane001's Blog </title>
+  <title> java基础加强---Day2 | Zane001's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -228,7 +225,7 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
             
             
               
-                java基础加强---Day1
+                java基础加强---Day2
               
             
           </h1>
@@ -237,8 +234,8 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2012-02-23T00:00:00+08:00" content="2012-02-23">
-              2012-02-23
+            <time itemprop="dateCreated" datetime="2012-02-25T00:00:00+08:00" content="2012-02-25">
+              2012-02-25
             </time>
           </span>
 
@@ -263,8 +260,8 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2012/02/23/java基础加强---Day1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/23/java基础加强---Day1/" itemprop="commentsCount"></span>
+                <a href="/2012/02/25/java基础加强---Day2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/25/java基础加强---Day2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -283,22 +280,11 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
       
 
       
-        <span itemprop="articleBody"><ol>
-<li>面试时，即使不知道 jdk1.6的特性，也要把jdk1.5的特性说一下。</li>
-<li>javaw是java图形化界面时启动的进程。英文单词的简称</li>
-<li>workspace里有很多project，设置快捷键Window–Preferences–General—keys–<br>Content Assist，syso +　alt / ，出来System.out.println();<br>com.itheima.day1 变量名命名准确</li>
-<li>Perspective (透视图) view(视图)</li>
-<li>编译环境和运行环境要一致， workspace与project环境的配置，体现了extend和override<br>的应用</li>
-<li>配置模块代码 Preferences–Java–Editor–Templates，即可根据自己的需要创建新模板</li>
-<li>配置jdk，选择 Build Path</li>
-<li>静态导入 import static java.lang.Math.* 在程序中就可以不用写Math而直接使用Math的<br>方法。</li>
-<li>overload和override的区分； VariableParameter 接收可变参数，只能出现在参数列表的最<br>后，例如int … args，调用时采用args[]数组的形式访问</li>
-<li>ctrl + shift + / 注释代码 增强的for循环 for(类型 变量名：集合变量名)，集合变量可以<br>是数组或者实现了Iterable接口的集合类</li>
-<li><p>Integer 自动装箱，把int类型装入，不需要转换，Integer和int相加时，自动拆箱成int类型<br>相加；当int类型的值为-128~127时，共享一个元类，超出该范围时，只不共享。FlyWeight享<br>元设计模式，避免大量拥有相同内容的小类的开销(如耗费内存),使大家共享一个类(元类)，有内<br>部状态intrinsic和外部状态extrinsic之分</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">String </span><span class="literal">s1</span> = “abcd”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s2</span> = “abcd”<span class="comment">;</span></span><br><span class="line"><span class="label">System.out.println</span>(<span class="literal">s1</span> == <span class="literal">s2</span>)<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s3</span> = new <span class="keyword">String(“a”);</span><br><span class="line"></span><span class="keyword">String </span><span class="literal">s4</span> = new <span class="keyword">String(“a”);</span><br><span class="line"></span><span class="label">System.out.println</span>(<span class="literal">s3</span>.equals(<span class="literal">s4</span>))<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s5</span> = “ja”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s6</span> = “va”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s7</span> = “java”<span class="comment">;</span></span><br><span class="line"><span class="keyword">String </span><span class="literal">s8</span> = <span class="literal">s1</span> + <span class="literal">s2</span><span class="comment">;</span></span><br><span class="line"><span class="label">System.out.println</span>(<span class="literal">s7</span> == <span class="literal">s8</span>)<span class="comment">;//false</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>枚举就是让某个类型的变量取值只能为若干固定值中的一个，否则，在编译期间编译器就会<br>报错，从而能够尽早的发现问题。</p>
-</li>
+        <span itemprop="articleBody"><h4 id="13、用普通类实现枚举功能">13、用普通类实现枚举功能</h4><p>（1）私有的构造方法<br>（2）每个元素分别用一个共有静态成员变量表示<br>（3）采用抽象方法就可以将大量的if、else语句转移成一个个独立的类</p>
+<h4 id="14、枚举的基本应用，它是一个特殊的类，其中每一个元素都是该类的一个实例对象，元素必须位于枚举体中最开始的部分，后面以分号结束，不能把成员变量等放在枚举元素的前面，定义一个WeekDay的枚举，调用values、valueOf、name、toString、ordinal、getClass()方法">14、枚举的基本应用，它是一个特殊的类，其中每一个元素都是该类的一个实例对象，元素必须位于枚举体中最开始的部分，后面以分号结束，不能把成员变量等放在枚举元素的前面，定义一个WeekDay的枚举，调用values、valueOf、name、toString、ordinal、getClass()方法</h4><h4 id="15、实现带有构造方法的枚举时，构造方法必须为私有，如果实例对象后面没有大括号或者有大括号但值为空，则调用参数为空的构造方法，如果实例对象后面大括号值不为空，则调用有参的构造方法。">15、实现带有构造方法的枚举时，构造方法必须为私有，如果实例对象后面没有大括号或者有大括号但值为空，则调用参数为空的构造方法，如果实例对象后面大括号值不为空，则调用有参的构造方法。</h4><h4 id="16、实现带抽象方法的枚举时，每个元素分别是枚举类的子类来生成的实例对象，有些类似内部类的方式，元素后面可以带有父类参数。枚举只有一个成员时，就可以作为一种单例的实现方式。">16、实现带抽象方法的枚举时，每个元素分别是枚举类的子类来生成的实例对象，有些类似内部类的方式，元素后面可以带有父类参数。枚举只有一个成员时，就可以作为一种单例的实现方式。</h4><h4 id="17、Class类对应各个类在内存中的字节码，得到各个字节码对应的实例对象有3种方法">17、Class类对应各个类在内存中的字节码，得到各个字节码对应的实例对象有3种方法</h4><ol>
+<li>类名.class</li>
+<li>对象.getClass()</li>
+<li>Class.forName(“类名”)；有9种预定义的Class实例对象，分别是int、float、double、boolean、byte、char、short、long、void<br>isPrimitive()判断是否是预定义的类型,isArray()判断是不是数组类型,int.class == Integer.TYPE返回结果为true,只要在源程序中出现的类型，都有相应的Class实例对象.<h4 id="18、反射就是把java类中的各种成分映射为相应的java类，一个java类中用一个Class类的对象表示，一个类中的组成部分如成员变量、方法、构造方法、包等，也用一个个的java类来表示，相应类的实例对象分别是Field、Method、Constructor、Package">18、反射就是把java类中的各种成分映射为相应的java类，一个java类中用一个Class类的对象表示，一个类中的组成部分如成员变量、方法、构造方法、包等，也用一个个的java类来表示，相应类的实例对象分别是Field、Method、Constructor、Package</h4></li>
 </ol>
 </span>
       
@@ -317,12 +303,16 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2012/02/23/java基础加强---Day1/" rel="next" title="java基础加强---Day1">
+                <i class="fa fa-chevron-left"></i> java基础加强---Day1
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2012/02/25/java基础加强---Day2/" rel="prev" title="java基础加强---Day2">
-                java基础加强---Day2 <i class="fa fa-chevron-right"></i>
+              <a href="/2012/03/07/java基础加强---Day3/" rel="prev" title="java基础加强---Day3">
+                java基础加强---Day3 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -350,8 +340,8 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2012/02/23/java基础加强---Day1/"
-           data-title="java基础加强---Day1" data-url="http://zane001.github.io/2012/02/23/java基础加强---Day1/">
+      <div class="ds-thread" data-thread-key="2012/02/25/java基础加强---Day2/"
+           data-title="java基础加强---Day2" data-url="http://zane001.github.io/2012/02/25/java基础加强---Day2/">
       </div>
     
   </div>
@@ -451,7 +441,7 @@ workspace里有很多project，设置快捷键Window–Preferences–General—k
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#13、用普通类实现枚举功能"><span class="nav-number">1.</span> <span class="nav-text">13、用普通类实现枚举功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14、枚举的基本应用，它是一个特殊的类，其中每一个元素都是该类的一个实例对象，元素必须位于枚举体中最开始的部分，后面以分号结束，不能把成员变量等放在枚举元素的前面，定义一个WeekDay的枚举，调用values、valueOf、name、toString、ordinal、getClass()方法"><span class="nav-number">2.</span> <span class="nav-text">14、枚举的基本应用，它是一个特殊的类，其中每一个元素都是该类的一个实例对象，元素必须位于枚举体中最开始的部分，后面以分号结束，不能把成员变量等放在枚举元素的前面，定义一个WeekDay的枚举，调用values、valueOf、name、toString、ordinal、getClass()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15、实现带有构造方法的枚举时，构造方法必须为私有，如果实例对象后面没有大括号或者有大括号但值为空，则调用参数为空的构造方法，如果实例对象后面大括号值不为空，则调用有参的构造方法。"><span class="nav-number">3.</span> <span class="nav-text">15、实现带有构造方法的枚举时，构造方法必须为私有，如果实例对象后面没有大括号或者有大括号但值为空，则调用参数为空的构造方法，如果实例对象后面大括号值不为空，则调用有参的构造方法。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16、实现带抽象方法的枚举时，每个元素分别是枚举类的子类来生成的实例对象，有些类似内部类的方式，元素后面可以带有父类参数。枚举只有一个成员时，就可以作为一种单例的实现方式。"><span class="nav-number">4.</span> <span class="nav-text">16、实现带抽象方法的枚举时，每个元素分别是枚举类的子类来生成的实例对象，有些类似内部类的方式，元素后面可以带有父类参数。枚举只有一个成员时，就可以作为一种单例的实现方式。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17、Class类对应各个类在内存中的字节码，得到各个字节码对应的实例对象有3种方法"><span class="nav-number">5.</span> <span class="nav-text">17、Class类对应各个类在内存中的字节码，得到各个字节码对应的实例对象有3种方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18、反射就是把java类中的各种成分映射为相应的java类，一个java类中用一个Class类的对象表示，一个类中的组成部分如成员变量、方法、构造方法、包等，也用一个个的java类来表示，相应类的实例对象分别是Field、Method、Constructor、Package"><span class="nav-number">6.</span> <span class="nav-text">18、反射就是把java类中的各种成分映射为相应的java类，一个java类中用一个Class类的对象表示，一个类中的组成部分如成员变量、方法、构造方法、包等，也用一个个的java类来表示，相应类的实例对象分别是Field、Method、Constructor、Package</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
