@@ -63,7 +63,7 @@
 将 view controller 设置为 map view的代理：Ctrl-dragging from the map view to the orange and white view controller button just above the layout area
 使用地图的 Annotation
 1234567891011121">
-<meta property="og:updated_time" content="2015-12-03T01:27:41.025Z">
+<meta property="og:updated_time" content="2015-12-03T01:35:54.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift学习笔记七">
 <meta name="twitter:description" content="Project 19  Capital Cities
@@ -328,12 +328,11 @@
 <h3 id="11-21">11-21</h3><p>遵守UIWebViewDelegate协议，但忘记写webView.delegate = self</p>
 <h3 id="11-22_Getting_Started_with_Core_Data_Tutorial">11-22 Getting Started with Core Data Tutorial</h3><ol>
 <li>Ctrl-drag from the table view to the yellow view controller icon, click on dataSource</li>
-<li>override func viewDidLoad() {<pre><code>super.<span class="function"><span class="title">viewDidLoad</span><span class="params">()</span></span>
-title = <span class="string">"\"The List\""</span>
-tableView.<span class="function"><span class="title">registerClass</span><span class="params">(UITableViewCell.self, forCellReuseIdentifier: <span class="string">"Cell"</span>)</span></span>
-</code></pre> }</li>
+<li><p>注册TableViewCell</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">     <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">     title = <span class="string">"\"The List\""</span></span><br><span class="line">     tableView.registerClass(<span class="type">UITableViewCell</span>.<span class="keyword">self</span>, forCellReuseIdentifier: <span class="string">"Cell"</span>)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>// MARK:  加标记</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  numberOfRowsInSection ~~~~~~~~~~~~~~~~~~~~~~    </span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> cell = tableView.dequeueReusableCellWithIdentifier(<span class="string">"Cell"</span>)</span><br><span class="line">        <span class="keyword">let</span> person = people[indexPath.row]</span><br><span class="line">        cell!.textLabel!.text = person.valueForKey(<span class="string">"name"</span>) <span class="keyword">as</span>? <span class="type">String</span></span><br><span class="line">        <span class="keyword">return</span> cell!</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(~~~~~~~~~~~~~~~~~~~~~~  numberOfRowsInSection ~~~~~~~~~~~~~~~~~~~~~~)</span></span>    </span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> cell = tableView.dequeueReusableCellWithIdentifier(<span class="string">"Cell"</span>)</span><br><span class="line">        <span class="keyword">let</span> person = people[indexPath.row]</span><br><span class="line">        cell!.textLabel!.text = person.valueForKey(<span class="string">"name"</span>) <span class="keyword">as</span>? <span class="type">String</span></span><br><span class="line">        <span class="keyword">return</span> cell!</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>显示TextField 的输入框</p>
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert.addTextFieldWithConfigurationHandler &#123; <span class="function"><span class="params">(textField: UITextField)</span> -&gt;</span> Void <span class="keyword">in</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -522,7 +521,7 @@ tableView.<span class="function"><span class="title">registerClass</span><span c
         <div class="copyright" >
   
   &copy;  2012-02-23 00:00 - 
-  <span itemprop="copyrightYear">2015</span>
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
