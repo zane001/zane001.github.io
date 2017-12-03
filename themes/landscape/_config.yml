@@ -10,6 +10,7 @@ fancybox: true
 
 # Sidebar
 sidebar: right
+display: hide
 widgets:
 - category
 - tag
